@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog &amp; Order | Natacakery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#FAF3E8',
+                            200: '#F5E6D3',
+                            300: '#EBD4B9'
+                        },
+                        rose: {
+                            100: '#F5DCDD',
+                            200: '#E8B4B8',
+                            300: '#D89498',
+                            400: '#C7757A'
+                        },
+                        cokelat: {
+                            light: '#9E6B47',
+                            DEFAULT: '#6B4226',
+                            dark: '#4A2C17'
+                        },
+                        teks: {
+                            DEFAULT: '#2F2A25',
+                            light: '#6E675F'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAF3E8;
+            color: #2F2A25;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .paper-card {
+            background-color: #FDFBF7;
+            background-image: radial-gradient(#e5d7c5 0.5px, transparent 0.5px);
+            background-size: 12px 12px;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #FAF3E8;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #E8B4B8;
+            border-radius: 999px;
+        }
+        #productModal {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 99999 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative pb-10">
+
+    <!-- Promo Banner for First Order -->
+    <div id="firstOrderBanner" class="bg-rose-300 text-teks font-medium text-xs sm:text-sm text-center py-2 px-4 shadow-sm">
+        ✨ First Order Special Offer! Use Voucher Code <span class="font-bold underline tracking-wide">WELCOME10</span> for 10% OFF
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-30 bg-cream-100/90 backdrop-blur-md border-b border-cream-200 px-4 sm:px-8 py-4 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="w-10 h-10 rounded-full bg-cokelat text-cream-100 flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-cookie-bite"></i>
+                </span>
+                <div>
+                    <h1 class="font-serif-title text-xl sm:text-2xl font-bold text-cokelat tracking-tight leading-none">Natacakery</h1>
+                    <p class="text-[10px] text-teks-light tracking-widest uppercase mt-0.5">Bakery &amp; Patisserie</p>
+                </div>
+            </a>
+
+            <!-- Search Desktop -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                <input type="text" id="searchInput" placeholder="Search cakes, eclairs, croissants..." 
+                    class="w-full bg-cream-50 border border-cream-300 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-cokelat transition-all placeholder-teks-light">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-teks-light"></i>
+            </div>
+        </div>
+
+        <!-- Search Mobile -->
+        <div class="md:hidden mt-3 relative">
+            <input type="text" id="mobileSearchInput" placeholder="Search your favorite treats..." 
+                class="w-full bg-cream-50 border border-cream-300 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-cokelat transition-all placeholder-teks-light">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-teks-light text-xs"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 flex-1 w-full">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs font-semibold tracking-widest text-cokelat uppercase bg-rose-100 px-3 py-1 rounded-full border border-rose-200">Freshly Baked Daily</span>
+            <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-cokelat mt-3 mb-2">Our Artisanal Catalogue</h2>
+            <p class="text-teks-light text-sm sm:text-base">Crafted with finest imported ingredients, warm passion, and authentic patisserie recipes.</p>
+        </div>
+
+        <!-- CATALOG FILTER SECTION -->
+        <div id="katalog-section" class="bg-cream-50 border border-cream-200 rounded-2xl p-4 sm:p-6 mb-10 shadow-sm scroll-mt-24">
+            <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar" id="categoryTabs">
+                <button data-cat="all" class="cat-btn bg-cokelat text-cream-100 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all shadow-sm">✨ All Products</button>
+                <button data-cat="cake" class="cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all">🍰 Cake</button>
+                <button data-cat="pastry" class="cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all">🥐 Pastry</button>
+                <button data-cat="roti" class="cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all">🍞 Bread</button>
+                <button data-cat="cookies" class="cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all">🍪 Cookies</button>
+                <button data-cat="hampers" class="cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all">🎁 Hampers</button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-cream-200/80">
+                <div class="w-full sm:w-1/2 flex flex-col gap-1.5">
+                    <div class="flex justify-between items-center text-xs text-teks-light font-medium">
+                        <span>Maximum Price Budget:</span>
+                        <span id="priceDisplay" class="font-bold text-cokelat text-sm">$45.00</span>
+                    </div>
+                    <input type="range" id="priceRange" min="2.00" max="45.00" step="0.50" value="45.00" class="w-full accent-cokelat cursor-pointer bg-cream-200 h-2 rounded-lg">
+                </div>
+
+                <div class="text-xs text-teks-light font-medium self-end sm:self-center">
+                    Showing <span id="productCount" class="font-bold text-cokelat">20</span> Items
+                </div>
+            </div>
+        </div>
+
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+        <div id="emptyState" class="hidden text-center py-16 px-4">
+            <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4 text-rose-400 text-3xl">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="font-serif-title text-xl font-bold text-cokelat">No Products Found</h3>
+            <p class="text-teks-light text-sm mt-1 mb-4">Try adjusting your search keywords or price filter range.</p>
+            <button onclick="resetFilters()" class="bg-cokelat text-cream-100 text-xs px-5 py-2.5 rounded-full font-medium hover:bg-cokelat-dark transition-all">Reset Search &amp; Filters</button>
+        </div>
+    </main>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="productModal" class="fixed inset-0 z-50 bg-teks/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="paper-card w-full max-w-xl rounded-3xl border-2 border-cream-300 shadow-2xl overflow-hidden relative transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col" id="modalContainer">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-cream-100/80 hover:bg-rose-200 text-cokelat rounded-full flex items-center justify-center transition-colors shadow font-bold text-lg">&times;</button>
+
+            <div class="overflow-y-auto custom-scroll p-5 sm:p-6 space-y-4">
+                <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden bg-cream-200 shadow-inner">
+                    <img id="modalImg" src="" alt="Detail" class="w-full h-full object-cover">
+                    <span id="modalBadge" class="absolute top-3 left-3 bg-rose-300 text-cokelat font-semibold text-xs px-3 py-1 rounded-full shadow">Bestseller</span>
+                </div>
+                <div>
+                    <h2 id="modalTitle" class="font-serif-title text-2xl font-bold text-cokelat">Product Title</h2>
+                    <p id="modalPrice" class="text-xl font-bold text-cokelat mt-1">$0.00</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-teks-light mb-1">Description</h4>
+                    <p id="modalDesc" class="text-sm text-teks">Product Description</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-cream-300/60">
+                    <div class="bg-cream-100/70 p-3 rounded-xl border border-cream-200">
+                        <h5 class="text-xs font-bold text-cokelat mb-1">🌾 Key Ingredients</h5>
+                        <p id="modalIngredients" class="text-xs text-teks-light">Ingredients</p>
+                    </div>
+                    <div class="bg-cream-100/70 p-3 rounded-xl border border-cream-200">
+                        <h5 class="text-xs font-bold text-cokelat mb-1">📦 Storage Guide</h5>
+                        <p id="modalStorage" class="text-xs text-teks-light">Storage</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-cream-100 border-t border-cream-300 flex justify-between items-center">
+                <button onclick="closeProductModal()" class="text-xs text-teks-light font-medium hover:text-cokelat">Close</button>
+                <button id="modalAddToCartBtn" class="bg-cokelat text-cream-100 px-6 py-2 rounded-full text-xs font-semibold shadow hover:bg-cokelat-dark transition-all">+ Add to Bag</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT SYSTEM LOGIC -->
+    <script>
+        const products = [
+            { id: 1, name: "Red Velvet Velvet Cake", category: "cake", price: 24.00, rating: 4.9, badge: "Bestseller", image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80", desc: "Tender red velvet sponge layered with Belgian premium cream cheese frosting.", ingredients: "Wheat flour, cocoa, buttermilk, Belgian cream cheese.", storage: "Refrigerate up to 3 days." },
+            { id: 2, name: "Artisanal Sourdough Loaf", category: "roti", price: 4.50, rating: 4.8, badge: "Recommended", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80", desc: "24-hour naturally fermented bread with a crisp golden crust and airy crumb.", ingredients: "Wheat flour, mineral water, natural sourdough starter.", storage: "Store at room temp up to 4 days." },
+            { id: 3, name: "Classic Chocolate Éclair", category: "pastry", price: 3.50, rating: 4.9, badge: "Bestseller", image: "https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=600&q=80", desc: "French choux pastry filled with silky vanilla custard and dark chocolate glaze.", ingredients: "French butter, organic eggs, 70% dark chocolate.", storage: "Refrigerate for up to 24 hours." },
+            { id: 4, name: "Japanese Milk Bread", category: "roti", price: 3.80, rating: 4.7, badge: "Favorite", image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=600&q=80", desc: "Ultra-fluffy Japanese loaf crafted with authentic Tangzhong roux technique.", ingredients: "Komugi flour, fresh milk, pure butter.", storage: "Keep in airtight container for 3-4 days." },
+            { id: 5, name: "Fresh Strawberry Tart", category: "pastry", price: 5.50, rating: 5.0, badge: "Chef Pick", image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80", desc: "Crispy tart shell filled with crème pâtissière and topped with fresh strawberries.", ingredients: "French AOP butter, almond flour, fresh strawberries.", storage: "Keep refrigerated." },
+            { id: 6, name: "Butter Almond Croissant", category: "pastry", price: 3.50, rating: 4.8, badge: "Bestseller", image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80", desc: "Flaky French croissant filled and topped with sweet almond frangipane.", ingredients: "French AOP butter, pastry flour, frangipane.", storage: "Reheat in oven at 180°C for 3 mins." },
+            { id: 7, name: "French Macaron Gift Box (8 Pcs)", category: "cookies", price: 12.50, rating: 4.9, badge: "Gift Choice", image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=600&q=80", desc: "Assortment of 8 authentic French macarons filled with lush ganache.", ingredients: "Almond flour, egg whites, natural ganache.", storage: "Refrigerate up to 7 days." },
+            { id: 8, name: "Matcha Opera Cake", category: "cake", price: 22.00, rating: 4.8, badge: "New", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80", desc: "6 delicate layers of almond sponge, Kyoto Uji Matcha buttercream, and chocolate.", ingredients: "Kyoto Uji Matcha, almond meal, dark chocolate.", storage: "Keep chilled at 4°C." },
+            { id: 9, name: "Korean Garlic Cheese Bread", category: "roti", price: 4.20, rating: 4.7, badge: "Popular", image: "https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?auto=format&fit=crop&w=600&q=80", desc: "Savory bun stuffed with sweetened cream cheese and dipped in garlic butter sauce.", ingredients: "Cream cheese, garlic butter, parsley.", storage: "Best enjoyed warm." },
+            { id: 10, name: "Choco Chip Soft Cookies", category: "cookies", price: 2.80, rating: 4.9, badge: "Sweet Bite", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80", desc: "Soft-baked cookie packed with melted Belgian chocolate chunks and sea salt.", ingredients: "Brown sugar, Belgian chocolate chunks, sea salt.", storage: "Store in airtight jar." },
+            { id: 11, name: "Deluxe Birthday Hamper", category: "hampers", price: 28.00, rating: 5.0, badge: "Special Gift", image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80", desc: "Luxury gift box combining Cookies, Macarons, Ribbon, and Greeting Card.", ingredients: "Assorted Natacakery patisserie treats.", storage: "Follow storage guide inside box." },
+            { id: 12, name: "Cinnamon Glazed Roll", category: "roti", price: 3.00, rating: 4.8, badge: "Recommended", image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&q=80", desc: "Warm Ceylon cinnamon roll topped with rich cream cheese glaze.", ingredients: "Ceylon cinnamon, brown sugar, cream cheese glaze.", storage: "Microwave for 15 seconds." },
+            { id: 13, name: "Mango Passionfruit Mousse Cake", category: "cake", price: 26.00, rating: 4.9, badge: "Chef Pick", image: "https://unsplash.com/photos/cake-with-slice-strawberry-fruits-Nl8Oa6ZuNcA", desc: "Tropical mango and passionfruit mousse layered over soft sponge crust.", ingredients: "Almense mango puree, passionfruit, heavy cream.", storage: "Keep chilled at 4°C." },
+            { id: 14, name: "Pistachio Raspberry Tart", category: "pastry", price: 6.00, rating: 4.8, badge: "New", image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80", desc: "Pistachio frangipane pastry base topped with fresh raspberries and cream.", ingredients: "Sicilian pistachio paste, raspberries, French butter.", storage: "Best eaten within 24 hours." },
+            { id: 15, name: "Brioche Feuilletée", category: "roti", price: 4.80, rating: 4.7, badge: "Artisanal", image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&q=80", desc: "Laminated flaky brioche loaf with rich butter aroma and golden caramelized top.", ingredients: "French Normandy butter, egg yolks, organic flour.", storage: "Store in room temp up to 3 days." },
+            { id: 16, name: "Double Chocolate Brownie Box", category: "cookies", price: 9.50, rating: 5.0, badge: "Bestseller", image: "https://images.unsplash.com/photo-1515037893149-de7f840978e2?auto=format&fit=crop&w=600&q=80", desc: "Fudgy dark chocolate brownies with shiny crinkly top and sea salt flakes.", ingredients: "70% Valrhona dark chocolate, Dutch cocoa powder.", storage: "Keep room temp up to 5 days." },
+            { id: 17, name: "Signature Afternoon Tea Hamper", category: "hampers", price: 38.00, rating: 5.0, badge: "Luxury Choice", image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80", desc: "Elegant hamper featuring Scones, English Tea, Mini Tartlets, and Jam.", ingredients: "Curated tea time treats & artisan preserves.", storage: "Refer to individual pack guide." },
+            { id: 18, name: "Earl Grey Blueberry Cake", category: "cake", price: 23.50, rating: 4.8, badge: "Popular", image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600&q=80", desc: "Infused Earl Grey tea sponge layers filled with fresh blueberry compote.", ingredients: "Bergamot Earl Grey tea, wild blueberries, cream.", storage: "Refrigerate up to 3 days." },
+            { id: 19, name: "Pain au Chocolat", category: "pastry", price: 3.20, rating: 4.9, badge: "Bestseller", image: "https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=600&q=80", desc: "Classic buttery croissant pastry stuffed with two batons of dark chocolate.", ingredients: "French butter, Valrhona chocolate batons.", storage: "Reheat in oven 2 mins." },
+            { id: 20, name: "Vanilla Bean Biscotti Jar", category: "cookies", price: 8.00, rating: 4.7, badge: "Favorite", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80", desc: "Twice-baked crunchy Italian almond biscottis infused with Madagascar vanilla.", ingredients: "Madagascar vanilla beans, sliced almonds, flour.", storage: "Store in airtight container up to 1 month." }
+        ];
+
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let maxPrice = 45.00;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            checkBanner();
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('kategori');
+            if (catParam) activeCategory = catParam.toLowerCase();
+            updateCategoryButtonsUI();
+            renderProducts();
+            setupEventListeners();
+        });
+
+        function checkBanner() {
+            if (localStorage.getItem('hasPurchasedBefore') === 'true') {
+                const b = document.getElementById('firstOrderBanner');
+                if (b) b.style.display = 'none';
+            }
+        }
+
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', (e) => { 
+                searchQuery = e.target.value.toLowerCase(); 
+                renderProducts(); 
+            });
+            document.getElementById('mobileSearchInput').addEventListener('input', (e) => { 
+                searchQuery = e.target.value.toLowerCase(); 
+                renderProducts(); 
+            });
+            const priceSlider = document.getElementById('priceRange');
+            priceSlider.addEventListener('input', (e) => {
+                maxPrice = parseFloat(e.target.value);
+                document.getElementById('priceDisplay').textContent = `$${maxPrice.toFixed(2)}`;
+                renderProducts();
+            });
+            document.getElementById('categoryTabs').addEventListener('click', (e) => {
+                const btn = e.target.closest('.cat-btn');
+                if (btn) { 
+                    activeCategory = btn.getAttribute('data-cat'); 
+                    updateCategoryButtonsUI(); 
+                    renderProducts(); 
+                }
+            });
+        }
+
+        function updateCategoryButtonsUI() {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === activeCategory) {
+                    btn.className = "cat-btn bg-cokelat text-cream-100 px-5 py-2 rounded-full text-xs font-medium whitespace-nowrap shadow-sm";
+                } else {
+                    btn.className = "cat-btn bg-cream-200 text-teks hover:bg-rose-200 px-5 py-2 rounded-full text-xs font-medium whitespace-nowrap";
+                }
+            });
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const filtered = products.filter(p => 
+                (activeCategory === 'all' || p.category === activeCategory) && 
+                (p.name.toLowerCase().includes(searchQuery) || p.desc.toLowerCase().includes(searchQuery)) && 
+                p.price <= maxPrice
+            );
+
+            document.getElementById('productCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-cream-50 rounded-2xl border border-cream-200 shadow-sm flex flex-col overflow-hidden group">
+                    <div class="relative h-48 overflow-hidden bg-cream-200 cursor-pointer" onclick="openProductModal(${p.id})">
+                        <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="${p.name}">
+                        <span class="absolute top-3 left-3 bg-rose-300 text-cokelat text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow">${p.badge}</span>
+                        <div class="absolute bottom-2 right-2 bg-cream-100/90 text-cokelat text-[11px] font-semibold px-2.5 py-1 rounded-md shadow flex items-center gap-1">
+                            <i class="fa-solid fa-eye"></i> View
+                        </div>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-rose-400 block mb-0.5">${p.category}</span>
+                            <h3 class="font-serif-title font-bold text-base text-cokelat line-clamp-1 cursor-pointer hover:text-rose-400" onclick="openProductModal(${p.id})">${p.name}</h3>
+                            <p class="text-xs text-teks-light line-clamp-2 mt-1">${p.desc}</p>
+                        </div>
+                        <div class="pt-2 border-t border-cream-200 flex items-center justify-between gap-1.5">
+                            <span class="font-bold text-sm text-cokelat">$${p.price.toFixed(2)}</span>
+                            <div class="flex items-center gap-1">
+                                <button onclick="openProductModal(${p.id})" title="View Details" class="bg-cream-200 hover:bg-rose-200 text-cokelat px-2 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors">
+                                    <i class="fa-solid fa-circle-info"></i> Info
+                                </button>
+                                <button onclick="sendToCart(${p.id})" class="bg-cokelat text-cream-100 px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1 shadow hover:bg-cokelat-dark transition-all">
+                                    <i class="fa-solid fa-plus"></i> Bag
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetFilters() {
+            activeCategory = 'all';
+            searchQuery = '';
+            maxPrice = 45.00;
+            document.getElementById('searchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            document.getElementById('priceRange').value = 45.00;
+            document.getElementById('priceDisplay').textContent = '$45.00';
+            updateCategoryButtonsUI();
+            renderProducts();
+        }
+
+        function sendToCart(id) {
+            const product = products.find(p => p.id === id);
+            window.parent.postMessage({ type: 'addToCart', product: product }, '*');
+        }
+
+        function openProductModal(id) {
+            const p = products.find(p => p.id === id);
+            if (!p) return;
+            document.getElementById('modalImg').src = p.image;
+            document.getElementById('modalTitle').textContent = p.name;
+            document.getElementById('modalBadge').textContent = p.badge || 'Artisanal';
+            document.getElementById('modalPrice').textContent = `$${p.price.toFixed(2)}`;
+            document.getElementById('modalDesc').textContent = p.desc;
+            document.getElementById('modalIngredients').textContent = p.ingredients;
+            document.getElementById('modalStorage').textContent = p.storage;
+
+            document.getElementById('modalAddToCartBtn').onclick = () => {
+                sendToCart(p.id);
+                closeProductModal();
+            };
+
+            const modal = document.getElementById('productModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+        }
+
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'filterAndScroll') {
+                activeCategory = event.data.category;
+                updateCategoryButtonsUI();
+                renderProducts();
+                const section = document.getElementById('katalog-section');
+                if (section) section.scrollIntoView({ behavior: 'smooth' });
+            }
+            if (event.data && event.data.type === 'hideBanner') {
+                checkBanner();
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('autoscroll') === 'true') {
+                setTimeout(() => {
+                    const section = document.getElementById('katalog-section');
+                    if (section) section.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>

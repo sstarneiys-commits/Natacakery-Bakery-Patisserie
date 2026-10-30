@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natacakery | Bakery &amp; Patisserie</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* DROPDOWN HOVER & TRANSITION */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff !important;
+        min-width: 170px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+        border-radius: 12px;
+        padding: 8px 0;
+        z-index: 1000;
+      }
+
+      .dropdown:hover .dropdown-menu,
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+
+      /* BINGKAI POSISI TOOLBAR */
+      .navbar-header-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0 24px;
+        box-sizing: border-box;
+      }
+
+      /* NAVBAR UTAMA PRESISI DI TENGAH LAYAR */
+      .navbar {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        background: #6B4226 !important;
+        padding: 8px 20px !important;
+        border-radius: 40px !important;
+        margin: 0 auto !important;
+        box-shadow: 0 4px 15px rgba(107, 66, 38, 0.2) !important;
+      }
+
+      /* TEKS LINK BIASA KREM TERANG DI NAVBAR */
+      .navbar a, 
+      .navbar a:visited, 
+      .navbar a:link, 
+      .navbar .dropdown button {
+        color: #FAF3E8 !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        font-size: 13.5px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 6px 12px !important;
+        transition: color 0.2s ease !important;
+      }
+
+      .navbar a:hover, 
+      .navbar .dropdown button:hover {
+        color: #E8B4B8 !important;
+      }
+
+      /* WARNA TULISAN DROPDOWN - COKELAT GELAP */
+      .dropdown-menu a, 
+      .dropdown-menu a:visited,
+      .dropdown-menu a:link {
+        color: #6B4226 !important;
+        display: block !important;
+        padding: 8px 16px !important;
+        text-decoration: none !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        transition: background 0.2s ease, color 0.2s ease !important;
+      }
+      
+      .dropdown-menu a:hover {
+        background-color: #FAF3E8 !important;
+        color: #D89498 !important;
+      }
+
+      /* HIGHLIGHT BUTTONS PINK PUCAT KHUSUS CUSTOM CAKE & BRANCH LOCATION */
+      .nav-custom-btn {
+        background: #E8B4B8 !important;
+        color: #6B4226 !important;
+        font-weight: 600 !important;
+        padding: 6px 16px !important;
+        border-radius: 20px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+      .nav-custom-btn:hover {
+        background: #D89498 !important;
+        color: #ffffff !important;
+        transform: translateY(-1px);
+      }
+
+      /* TOMBOL SUMBER POSISI POJOK KANAN SEJAJAR NAVBAR */
+      .btn-sumber-right {
+        position: absolute !important;
+        right: 24px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: #6B4226 !important;
+        color: #FAF3E8 !important;
+        font-weight: 600 !important;
+        padding: 8px 18px !important;
+        border-radius: 30px !important;
+        transition: all 0.3s ease !important;
+        text-decoration: none !important;
+        font-size: 13.5px !important;
+        box-shadow: 0 3px 10px rgba(107, 66, 38, 0.25) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+      }
+      .btn-sumber-right:hover {
+        background: #4A2C17 !important;
+        color: #E8B4B8 !important;
+        transform: translateY(-50%) scale(1.03) !important;
+      }
+
+      /* OVERLAY STYLING */
+      #welcomeOverlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(47, 42, 37, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 1;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+
+      #welcomeOverlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .opening-modal {
+        background: #FAF3E8;
+        width: 100%;
+        max-width: 440px;
+        border-radius: 32px;
+        padding: 35px 28px;
+        text-align: center;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        border: 2px solid #E8B4B8;
+        position: relative;
+        overflow: hidden;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .opening-step {
+        display: none;
+        animation: fadeInSlide 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      }
+
+      .opening-step.active {
+        display: block;
+      }
+
+      @keyframes fadeInSlide {
+        from { opacity: 0; transform: translateY(18px) scale(0.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      .intro-title { font-family: 'Playfair Display', serif; font-size: 26px; color: #6B4226; margin-bottom: 2px; }
+      .brand-sub-label { font-size: 11px; font-weight: 700; color: #E8B4B8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; display: block; }
+      .intro-subtitle { font-size: 13px; color: #2F2A25; opacity: 0.85; line-height: 1.5; }
+      .form-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #6B4226; margin-bottom: 2px; }
+
+      .input-field-group { margin-top: 14px; text-align: left; }
+      .input-field-group label { display: block; font-size: 11.5px; font-weight: 600; color: #6B4226; margin-bottom: 4px; }
+      .input-field-group input, .input-field-group select, .input-field-group textarea {
+        width: 100%; padding: 10px 14px; border: 1.5px solid #E8B4B8; border-radius: 14px;
+        font-size: 13px; font-family: 'Poppins', sans-serif; outline: none; background: #FFFFFF;
+        box-sizing: border-box;
+      }
+
+      .phone-input-wrapper { display: flex; gap: 8px; }
+      .phone-input-wrapper select { width: 50%; cursor: pointer; }
+      .phone-input-wrapper input { width: 50%; }
+
+      .btn-opening-action {
+        width: 100%; background: #6B4226; color: white; border: none; padding: 12px;
+        border-radius: 18px; font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 600;
+        cursor: pointer; margin-top: 20px; box-shadow: 0 4px 14px rgba(107, 66, 38, 0.25); transition: 0.3s;
+      }
+      .btn-opening-action:hover { background: #D89498; transform: translateY(-2px); }
+
+      .loading-spinner {
+        width: 44px; height: 44px; border: 4px solid #E8B4B8; border-top: 4px solid #6B4226;
+        border-radius: 50%; margin: 20px auto 16px; animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+      /* FLOATING CART BUTTON */
+      #floatingCartFab {
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        z-index: 9999 !important;
+      }
+
+      #floatingCartFab button {
+        background: #6B4226;
+        color: #FAF3E8;
+        border: 2px solid #EBD4B9;
+        padding: 12px 22px;
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        transition: transform 0.2s;
+      }
+      #floatingCartFab button:hover { transform: scale(1.05); }
+
+      /* TOAST NOTIFIKASI */
+      #cartToast {
+        position: fixed !important;
+        bottom: 25px !important;
+        left: 25px !important;
+        z-index: 99999 !important;
+        background: #6B4226;
+        color: #FAF3E8;
+        padding: 12px 18px;
+        border-radius: 16px;
+        border: 2px solid #EBD4B9;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(100px);
+        pointer-events: none;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* CART DRAWER SIDEBAR */
+      #cartDrawer {
+        position: fixed; inset: 0; z-index: 999999; background: rgba(47,42,37,0.4);
+        backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: 0.3s;
+      }
+      #cartDrawer.open { opacity: 1; pointer-events: auto; }
+
+      #drawerPanel {
+        position: fixed; top: 0; right: 0; height: 100%; width: 100%; max-width: 420px;
+        background: #FAF3E8; box-shadow: -10px 0 30px rgba(0,0,0,0.2); display: flex;
+        flex-direction: column; transform: translateX(100%); transition: transform 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+      }
+      #cartDrawer.open #drawerPanel { transform: translateX(0); }
+
+      /* RECEIPT MODAL */
+      #receiptModal {
+        position: fixed; inset: 0; z-index: 999999; background: rgba(47,42,37,0.6);
+        backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
+        padding: 20px; opacity: 0; pointer-events: none; transition: 0.3s;
+      }
+      #receiptModal.open { opacity: 1; pointer-events: auto; }
+
+      /* MODAL DETAIL PRODUK */
+      #productDetailModal {
+        position: fixed; inset: 0; z-index: 999999; background: rgba(47,42,37,0.6);
+        backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center;
+        padding: 20px; opacity: 0; pointer-events: none; transition: all 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+      }
+      #productDetailModal.open { opacity: 1; pointer-events: auto; }
+      
+      .product-modal-card {
+        background-color: #FAF3E8; width: 100%; max-width: 580px; border-radius: 28px;
+        border: 2px solid #EBD4B9; padding: 25px; box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        max-height: 90vh; overflow-y: auto; position: relative;
+        transform: scale(0.95); transition: transform 0.3s ease;
+      }
+      #productDetailModal.open .product-modal-card { transform: scale(1); }
+
+      .paper-card {
+        background-color: #FDFBF7; width: 100%; max-width: 420px; border-radius: 28px;
+        border: 2px solid #EBD4B9; padding: 25px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .checkout-section-title {
+        font-size: 11px;
+        font-weight: 700;
+        color: #6B4226;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 4px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- OVERLAY SPLASH WELCOME MODAL -->
+    <div id="welcomeOverlay">
+      <div class="opening-modal">
+        <div class="opening-step active" id="step1">
+          <span style="font-size: 36px; display: block; margin-bottom: 8px;">✨</span>
+          <h1 class="intro-title">Welcome to<br>NATACAKERY</h1>
+          <span class="brand-sub-label">Bakery &amp; Patisserie</span>
+          <p class="intro-subtitle">Warmth of freshly baked artisan breads and delicate pastries, crafted with love to brighten your day.</p>
+          <button type="button" class="btn-opening-action" onclick="goToStep(2)">Get Started ✦</button>
+        </div>
+
+        <div class="opening-step" id="step2">
+          <h2 class="form-title">Let's Get Acquainted! 💌</h2>
+          <span class="brand-sub-label">Natacakery | Bakery &amp; Patisserie</span>
+          <p class="intro-subtitle">Complete your details to activate your account &amp; unlock your welcome voucher.</p>
+          <form id="formRegistration" onsubmit="handleRegistration(event)">
+            <div class="input-field-group">
+              <label for="userNama">Full Name</label>
+              <input type="text" id="userNama" placeholder="e.g. Khansa" required />
+            </div>
+
+            <div class="input-field-group">
+              <label for="userEmail">Email Address</label>
+              <input type="email" id="userEmail" placeholder="name@gmail.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please include @ and domain (e.g. @gmail.com)" />
+            </div>
+
+            <div class="input-field-group">
+              <label for="userPhone">Nationality / Phone Number</label>
+              <div class="phone-input-wrapper">
+                <select id="userCountryCode" required>
+                  <option value="+62|🇮🇩 Indonesia">🇮🇩 Indonesia (+62)</option>
+                  <option value="+60|🇲🇾 Malaysia">🇲🇾 Malaysia (+60)</option>
+                  <option value="+65|🇸🇬 Singapore">🇸🇬 Singapore (+65)</option>
+                  <option value="+81|🇯🇵 Japan">🇯🇵 Japan (+81)</option>
+                  <option value="+82|🇰🇷 S. Korea">🇰🇷 S. Korea (+82)</option>
+                  <option value="+1|🇺🇸 USA">🇺🇸 USA (+1)</option>
+                  <option value="+44|🇬🇧 UK">🇬🇧 UK (+44)</option>
+                  <option value="+61|🇦🇺 Australia">🇦🇺 Australia (+61)</option>
+                </select>
+                <input type="tel" id="userPhone" placeholder="87722043442" required pattern="[0-9]{8,13}" title="Digits only" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-opening-action">Claim Voucher ✦</button>
+          </form>
+        </div>
+
+        <div class="opening-step" id="step3">
+          <div class="loading-spinner"></div>
+          <h3 style="color: #6B4226; font-size: 18px; margin-top: 10px; font-family:'Playfair Display', serif;">Baking Your Voucher...</h3>
+          <span class="brand-sub-label">Natacakery | Bakery &amp; Patisserie</span>
+          <p class="intro-subtitle" style="font-size: 12px; margin-top: 4px;">Please hold on for a magical moment!</p>
+        </div>
+
+        <div class="opening-step" id="step4">
+          <div style="font-size:40px; margin-bottom:8px;">🎁</div>
+          <h2 class="form-title">Hurray! Congratulations <span id="displayNama"></span>!</h2>
+          <span class="brand-sub-label">Natacakery | Bakery &amp; Patisserie</span>
+          <p class="intro-subtitle" style="margin-top: 6px;">
+            You have successfully unlocked a <strong>10% OFF Voucher</strong> for your first artisanal purchase.
+          </p>
+
+          <div style="background: #FFFFFF; border: 1.5px dashed #E8B4B8; border-radius: 16px; padding: 12px; margin-top: 14px; text-align: left; font-size: 11.5px; color: #6B4226;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Nationality:</span><strong id="displayCountry"></strong></div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Registered Email:</span><strong id="displayEmail"></strong></div>
+            <div style="display: flex; justify-content: space-between;"><span>WhatsApp No:</span><strong id="displayPhone"></strong></div>
+          </div>
+
+          <button type="button" class="btn-opening-action" onclick="finishOpening()">Explore Menu ✨</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER BRANDING -->
+    <header class="brand">
+      <h1><b>NATACAKERY</b></h1>
+      <p><b>Bakery &amp; Patisserie — We are truly thankful for your visit. Discover our full selection of artisanal cakes, pâtisserie, and desserts.</b></p>
+    </header>
+
+    <!-- NAVBAR UTAMA -->
+    <div class="navbar-header-wrapper">
+      <nav class="navbar">
+        <a href="home.html" target="content">Home</a>
+
+        <!-- DROPDOWN PRODUCTS -->
+        <div class="dropdown">
+          <button onclick="openProductsPage(event)">Products &#9662;</button>
+          <div class="dropdown-menu">
+            <a href="javascript:void(0)" onclick="openProductsCategory('cake')">Cake</a>
+            <a href="javascript:void(0)" onclick="openProductsCategory('pastry')">Pastry</a>
+            <a href="javascript:void(0)" onclick="openProductsCategory('roti')">Bread</a>
+            <a href="javascript:void(0)" onclick="openProductsCategory('cookies')">Cookies</a>
+            <a href="javascript:void(0)" onclick="openProductsCategory('hampers')">Hampers</a>
+          </div>
+        </div>
+
+        <a href="javascript:void(0)" id="btnCustomCake" class="nav-custom-btn">✨ Custom Cake</a>
+        <a href="javascript:void(0)" id="btnBranchLocation" class="nav-custom-btn">✈️ Branch Location</a>
+
+        <!-- DROPDOWN SERVICE -->
+        <div class="dropdown">
+          <button onclick="openServicePage(event)">Service &#9662;</button>
+          <div class="dropdown-menu">
+            <a href="javascript:void(0)" onclick="openServiceDetail('custom-ideas')">💡 Custom Ideas</a>
+            <a href="javascript:void(0)" onclick="openServiceDetail('ribbon-greeting')">🎀 Ribbon &amp; Greeting</a>
+            <a href="javascript:void(0)" onclick="openServiceDetail('delivery')">🛵 Express Delivery</a>
+          </div>
+        </div>
+
+        <a href="about.html" target="content">About</a>
+      </nav>
+
+      <!-- TOMBOL SUMBER -->
+      <a href="sumber.html" target="content" class="btn-sumber-right"><i class="fa-solid fa-camera"></i> Source</a>
+    </div>
+
+    <!-- IFRAME MAIN CONTENT -->
+    <main>
+      <iframe id="content" name="content" src="home.html" title="Main Content Frame"></iframe>
+    </main>
+
+    <!-- FLOATING CART FAB BUTTON -->
+    <div id="floatingCartFab">
+      <button onclick="toggleCartDrawer(true)">
+        <i class="fa-solid fa-basket-shopping" style="font-size:18px;"></i>
+        <span style="font-size: 13px; font-weight: 600;">Shopping Bag</span>
+        <span id="fabCounter" style="background: #E8B4B8; color: #6B4226; font-weight: bold; font-size: 11px; padding: 2px 8px; border-radius: 20px;">0</span>
+      </button>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="cartToast">
+      <div style="background: #E8B4B8; color: #6B4226; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</div>
+      <div>
+        <p style="font-size: 12px; font-weight: 600; margin: 0;">Item added to your shopping bag</p>
+        <p style="font-size: 10px; opacity: 0.8; margin: 0;">Review items anytime to checkout.</p>
+      </div>
+      <button onclick="toggleCartDrawer(true)" style="background: #E8B4B8; color: #6B4226; border: none; font-size: 11px; font-weight: bold; padding: 6px 12px; border-radius: 10px; cursor: pointer; flex-shrink: 0; margin-left: 6px;">
+        View Bag
+      </button>
+    </div>
+
+    <!-- CART SIDEBAR DRAWER -->
+    <div id="cartDrawer">
+      <div id="drawerPanel">
+        <div style="padding: 18px; border-bottom: 1px solid #EBD4B9; display: flex; justify-content: space-between; align-items: center; background: #F5E6D3;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-basket-shopping" style="color: #6B4226;"></i>
+            <strong style="color: #6B4226; font-size: 16px;">Shopping Bag</strong>
+          </div>
+          <button onclick="toggleCartDrawer(false)" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #6B4226;">&times;</button>
+        </div>
+
+        <div id="cartItemsContainer" style="flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px;"></div>
+
+        <div style="padding: 15px; background: #F5E6D3; border-top: 1px solid #EBD4B9; max-height: 55vh; overflow-y: auto;">
+          
+          <!-- PILIHAN CABANG TOKO LENGKAP 8 NEGARA -->
+          <div>
+            <label class="checkout-section-title">📍 Select Store Branch</label>
+            <select id="cartBranch" style="width:100%; padding:8px 10px; border:1px solid #EBD4B9; border-radius:8px; font-size:12px; outline:none; background:white;">
+              <option value="Jakarta Main Branch HQ (🇮🇩)">🇮🇩 Jakarta Main Branch HQ (Indonesia)</option>
+              <option value="Bandung Boutique Outlet (🇮🇩)">🇮🇩 Bandung Boutique Outlet (Indonesia)</option>
+              <option value="Surabaya City Outlet (🇮🇩)">🇮🇩 Surabaya City Outlet (Indonesia)</option>
+              <option value="Kuala Lumpur Flagship Store (🇲🇾)">🇲🇾 Kuala Lumpur Flagship Store (Malaysia)</option>
+              <option value="Singapore Orchard Boutique (🇸🇬)">🇸🇬 Singapore Orchard Boutique (Singapore)</option>
+              <option value="Tokyo Ginza Branch (🇯🇵)">🇯🇵 Tokyo Ginza Branch (Japan)</option>
+              <option value="Seoul Gangnam Flagship (🇰🇷)">🇰🇷 Seoul Gangnam Flagship (S. Korea)</option>
+              <option value="New York Fifth Ave Outlet (🇺🇸)">🇺🇸 New York Fifth Ave Outlet (USA)</option>
+              <option value="London Mayfair Branch (🇬🇧)">🇬🇧 London Mayfair Branch (UK)</option>
+              <option value="Sydney Harbour Boutique (🇦🇺)">🇦🇺 Sydney Harbour Boutique (Australia)</option>
+            </select>
+          </div>
+
+          <!-- PILIHAN METODE LAYANAN PESANAN -->
+          <div style="margin-top: 8px;">
+            <label class="checkout-section-title">🍽️ Dining / Service Option</label>
+            <select id="cartServiceType" onchange="toggleAddressField()" style="width:100%; padding:8px 10px; border:1px solid #EBD4B9; border-radius:8px; font-size:12px; outline:none; background:white;">
+              <option value="Dine-In">🍽️ Dine-In (Makan di Tempat)</option>
+              <option value="Self Pick-Up">🛍️ Self Pick-Up (Ambil Sendiri)</option>
+              <option value="Delivery Service">🛵 Express Delivery (Jasa Antar)</option>
+            </select>
+          </div>
+
+          <!-- INPUT ALAMAT PENGIRIMAN -->
+          <div id="addressGroup" style="margin-top: 8px; display: none;">
+            <label class="checkout-section-title">🏡 Delivery Address</label>
+            <textarea id="cartAddress" rows="2" placeholder="Enter complete delivery address..." style="width:100%; padding:8px 10px; border:1px solid #EBD4B9; border-radius:8px; font-size:12px; outline:none; background:white; resize:none;"></textarea>
+          </div>
+
+          <!-- REQUEST UCAPAN / PITA -->
+          <div style="margin-top: 8px;">
+            <label class="checkout-section-title">🎀 Greeting Note / Custom Request</label>
+            <input type="text" id="cartServiceNote" placeholder="e.g. Rose Ribbon + 'Happy Birthday!'" style="width: 100%; padding: 8px 10px; border: 1px solid #EBD4B9; border-radius: 8px; font-size: 12px; outline: none; background:white;">
+          </div>
+
+          <!-- VOUCHER -->
+          <div style="margin-top: 10px;">
+            <div style="display: flex; gap: 6px;">
+              <input type="text" id="voucherInput" placeholder="Voucher Code (WELCOME10)" style="flex: 1; padding: 8px 10px; border: 1px solid #EBD4B9; border-radius: 8px; font-size: 12px; text-transform: uppercase; outline: none; background:white;">
+              <button onclick="applyVoucher()" style="background: #E8B4B8; color: #6B4226; border: none; padding: 8px 14px; border-radius: 8px; font-weight: bold; font-size: 12px; cursor: pointer;">Apply</button>
+            </div>
+            <div id="voucherStatus" style="font-size: 11px; margin-top: 4px; display: none; font-weight: 500;"></div>
+          </div>
+
+          <!-- HITUNGAN PRICING (USD FORMAT) -->
+          <div style="font-size: 12px; color: #2F2A25; margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Subtotal:</span><span id="cartSubtotal">$0.00</span></div>
+            <div id="discountRow" style="display: none; justify-content: space-between; color: #2e7d32; margin-bottom: 4px;"><span>Discount (10%):</span><span id="cartDiscount">-$0.00</span></div>
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; color: #6B4226; border-top: 1px solid #EBD4B9; padding-top: 6px;">
+              <span>Total:</span><span id="cartTotal">$0.00</span>
+            </div>
+          </div>
+
+          <!-- TOMBOL CHECKOUT & WHATSAPP CONSULTATION -->
+          <button onclick="checkout()" style="width: 100%; background: #6B4226; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; margin-bottom: 8px;">
+            Proceed to Checkout &rarr;
+          </button>
+
+          <button onclick="chatWhatsApp()" style="width: 100%; background: #25D366; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Chat Admin on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DETAIL PRODUK -->
+    <div id="productDetailModal">
+      <div class="product-modal-card">
+        <button onclick="closeProductDetailModal()" style="position: absolute; top: 16px; right: 16px; background: #E8B4B8; color: #6B4226; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">&times;</button>
+        
+        <div style="position: relative; width: 100%; height: 200px; border-radius: 18px; overflow: hidden; margin-bottom: 16px;">
+          <img id="detailImg" src="" style="width: 100%; height: 100%; object-fit: cover;">
+          <span id="detailBadge" style="position: absolute; top: 12px; left: 12px; background: #E8B4B8; color: #6B4226; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 20px;">Bestseller</span>
+        </div>
+
+        <h2 id="detailTitle" style="color: #6B4226; font-size: 22px; font-family: 'Playfair Display', serif; margin-bottom: 4px;">Product Title</h2>
+        <p id="detailPrice" style="color: #6B4226; font-size: 18px; font-weight: bold; margin-bottom: 12px;">$0.00</p>
+
+        <div style="text-align: left; margin-bottom: 16px;">
+          <h4 style="font-size: 11px; font-weight: bold; color: #6B4226; text-transform: uppercase; margin-bottom: 4px;">Description</h4>
+          <p id="detailDesc" style="font-size: 13px; color: #2F2A25; line-height: 1.5; margin: 0;">Description</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left; margin-bottom: 20px;">
+          <div style="background: #FFFFFF; padding: 12px; border-radius: 12px; border: 1px solid #EBD4B9;">
+            <h5 style="font-size: 11px; font-weight: bold; color: #6B4226; margin: 0 0 4px 0;">🌾 Key Ingredients</h5>
+            <p id="detailIngredients" style="font-size: 11.5px; color: #6E675F; margin: 0;">Ingredients</p>
+          </div>
+          <div style="background: #FFFFFF; padding: 12px; border-radius: 12px; border: 1px solid #EBD4B9;">
+            <h5 style="font-size: 11px; font-weight: bold; color: #6B4226; margin: 0 0 4px 0;">📦 Storage Guide</h5>
+            <p id="detailStorage" style="font-size: 11.5px; color: #6E675F; margin: 0;">Storage</p>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #EBD4B9; padding-top: 14px;">
+          <button onclick="closeProductDetailModal()" style="background: none; border: none; color: #6E675F; font-size: 12px; cursor: pointer;">Close</button>
+          <button id="btnDetailAddToCart" style="background: #6B4226; color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 12px; cursor: pointer;">+ Add to Shopping Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECEIPT MODAL UTAMA -->
+    <div id="receiptModal">
+      <div class="paper-card">
+        <div style="font-size: 40px; margin-bottom: 8px;">🥐</div>
+        <h3 style="color: #6B4226; font-size: 20px; margin-bottom: 4px;">Your Order is Baking! ✨</h3>
+        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 16px;">Thank you for ordering at Natacakery. Our kitchen is carefully preparing your artisanal treats.</p>
+        
+        <div style="background: #FAF3E8; border: 1px solid #EBD4B9; border-radius: 12px; padding: 12px; text-align: left; font-size: 12px; margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Invoice Ref:</span><strong id="receiptNo">#DB-0000</strong></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Selected Branch:</span><strong id="receiptBranch">-</strong></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Service Method:</span><strong id="receiptServiceMethod">-</strong></div>
+          <div id="receiptAddressRow" style="display:none; margin-bottom: 4px;"><span style="display:block; font-size:11px; opacity:0.8;">Delivery Address:</span><span id="receiptAddress" style="font-weight:600; color:#6B4226;">-</span></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Total Items:</span><span id="receiptCount">0 Items</span></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Greeting Request:</span><span id="receiptNote">-</span></div>
+          <div style="display: flex; justify-content: space-between; font-weight: bold; color: #6B4226; border-top: 1px dashed #EBD4B9; padding-top: 4px; margin-top: 4px;">
+            <span>Amount Paid:</span><span id="receiptTotal">$0.00</span>
+          </div>
+        </div>
+
+        <p style="font-size: 11px; color: #6B4226; font-weight: 600; margin-bottom: 4px;">© 2026 Natacakery | Bakery &amp; Patisserie. Baked with love every single day.</p>
+
+        <button onclick="closeReceiptModal()" style="width: 100%; background: #6B4226; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: bold; font-size: 12px; cursor: pointer;">
+          Return to Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      let cart = [];
+      let isVoucherApplied = false;
+      let toastTimeout = null;
+      let activeDetailProduct = null;
+
+      function toggleAddressField() {
+        const serviceType = document.getElementById('cartServiceType').value;
+        const addressGroup = document.getElementById('addressGroup');
+        if (serviceType === 'Delivery Service') {
+          addressGroup.style.display = 'block';
+        } else {
+          addressGroup.style.display = 'none';
+        }
+      }
+
+      function maskEmail(email) {
+        if (!email || !email.includes('@')) return email;
+        const [name, domain] = email.split('@');
+        if (name.length <= 2) return name[0] + '*@' + domain;
+        return name.slice(0, 2) + '*'.repeat(name.length - 2) + '@' + domain;
+      }
+
+      function maskPhone(phone) {
+        if (!phone || phone.length < 5) return phone;
+        return phone.slice(0, 3) + '*'.repeat(phone.length - 5) + phone.slice(-2);
+      }
+
+      function goToStep(stepNumber) {
+        document.querySelectorAll('.opening-step').forEach(step => step.classList.remove('active'));
+        const targetStep = document.getElementById('step' + stepNumber);
+        if (targetStep) targetStep.classList.add('active');
+      }
+
+      function handleRegistration(e) {
+        e.preventDefault();
+        const nama = document.getElementById('userNama').value;
+        const email = document.getElementById('userEmail').value;
+        const countryValue = document.getElementById('userCountryCode').value;
+        const phone = document.getElementById('userPhone').value;
+
+        const [code, countryName] = countryValue.split('|');
+
+        document.getElementById('displayNama').textContent = nama;
+        document.getElementById('displayCountry').textContent = countryName;
+        document.getElementById('displayEmail').textContent = maskEmail(email);
+        document.getElementById('displayPhone').textContent = code + ' ' + maskPhone(phone);
+
+        goToStep(3);
+        setTimeout(() => goToStep(4), 1800);
+      }
+
+      function finishOpening() {
+        document.getElementById('welcomeOverlay').classList.add('hidden');
+      }
+
+      function openProductsPage(e) {
+        if (e) e.stopPropagation();
+        const iframe = document.getElementById('content');
+        iframe.src = 'products.html';
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+
+      function openProductsCategory(kat) {
+        const iframe = document.getElementById('content');
+        iframe.src = 'products.html?kategori=' + kat + '&autoscroll=true';
+        if (iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ type: 'filterAndScroll', category: kat }, '*');
+        }
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+
+      function openServicePage(e) {
+        if (e) e.stopPropagation();
+        const iframe = document.getElementById('content');
+        iframe.src = 'service.html';
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+
+      function openServiceDetail(serviceType) {
+        const iframe = document.getElementById('content');
+        iframe.src = 'service.html?type=' + serviceType;
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+
+      document.querySelectorAll('.dropdown').forEach(dropdown => {
+        dropdown.addEventListener('mouseleave', function() {
+          this.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+        }
+      });
+
+      window.addEventListener('blur', function() {
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      });
+
+      window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'addToCart') {
+          const itemData = event.data.product;
+          const existing = cart.find(i => i.id === itemData.id);
+          if (existing) {
+            existing.qty += 1;
+          } else {
+            cart.push({ ...itemData, qty: 1 });
+          }
+          updateCartUI();
+          showCartToast();
+        }
+
+        if (event.data && event.data.type === 'openDetailModal') {
+          const p = event.data.product;
+          activeDetailProduct = p;
+          document.getElementById('detailImg').src = p.image;
+          document.getElementById('detailTitle').textContent = p.name;
+          document.getElementById('detailBadge').textContent = p.badge || 'Artisanal';
+          document.getElementById('detailPrice').textContent = `$${p.price.toFixed(2)}`;
+          document.getElementById('detailDesc').textContent = p.desc;
+          document.getElementById('detailIngredients').textContent = p.ingredients;
+          document.getElementById('detailStorage').textContent = p.storage;
+
+          document.getElementById('btnDetailAddToCart').onclick = function() {
+            const existing = cart.find(i => i.id === p.id);
+            if (existing) existing.qty += 1;
+            else cart.push({ ...p, qty: 1 });
+            updateCartUI();
+            showCartToast();
+            closeProductDetailModal();
+          };
+
+          document.getElementById('productDetailModal').classList.add('open');
+        }
+      });
+
+      function closeProductDetailModal() {
+        document.getElementById('productDetailModal').classList.remove('open');
+      }
+
+      function showCartToast() {
+        const toast = document.getElementById('cartToast');
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)';
+        toast.style.pointerEvents = 'auto';
+        
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(100px)';
+          toast.style.pointerEvents = 'none';
+        }, 3500);
+      }
+
+      function updateQuantity(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+        updateCartUI();
+      }
+
+      function removeFromCart(id) {
+        cart = cart.filter(i => i.id !== id);
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('fabCounter').textContent = totalQty;
+
+        const container = document.getElementById('cartItemsContainer');
+        if (cart.length === 0) {
+          container.innerHTML = '<p style="text-align:center; font-size:12px; opacity:0.6; padding:20px 0;">Your shopping bag is currently empty.</p>';
+        } else {
+          container.innerHTML = cart.map(item => `
+            <div style="display:flex; align-items:center; gap:10px; background:white; padding:10px; border-radius:12px; border:1px solid #EBD4B9;">
+              <img src="${item.image}" style="width:42px; height:42px; border-radius:8px; object-fit:cover;">
+              <div style="flex:1; min-width:0;">
+                <h4 style="font-size:12px; margin:0; color:#6B4226; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${item.name}</h4>
+                <p style="font-size:11px; margin:2px 0 0; font-weight:bold; color:#6B4226;">$${(item.price * item.qty).toFixed(2)}</p>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; background:#FAF3E8; padding:2px 6px; border-radius:6px;">
+                <button onclick="updateQuantity(${item.id}, -1)" style="border:none; background:none; cursor:pointer;">-</button>
+                <span style="font-size:12px; font-weight:bold;">${item.qty}</span>
+                <button onclick="updateQuantity(${item.id}, 1)" style="border:none; background:none; cursor:pointer;">+</button>
+              </div>
+              <button onclick="removeFromCart(${item.id})" style="border:none; background:none; color:#c1666b; cursor:pointer;">&times;</button>
+            </div>
+          `).join('');
+        }
+
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        let discount = isVoucherApplied ? (subtotal * 0.1) : 0;
+        const total = Math.max(0, subtotal - discount);
+
+        document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('cartDiscount').textContent = `-$${discount.toFixed(2)}`;
+        document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('discountRow').style.display = isVoucherApplied ? 'flex' : 'none';
+      }
+
+      function toggleCartDrawer(open) {
+        const drawer = document.getElementById('cartDrawer');
+        if (open) drawer.classList.add('open');
+        else drawer.classList.remove('open');
+      }
+
+      function applyVoucher() {
+        const input = document.getElementById('voucherInput');
+        const status = document.getElementById('voucherStatus');
+        const code = input.value.trim().toUpperCase();
+
+        if (code === 'WELCOME10' && localStorage.getItem('hasPurchasedBefore') === 'true') {
+          status.textContent = '❌ Voucher WELCOME10 has already been used on your first purchase.';
+          status.style.color = '#c1666b';
+          status.style.display = 'block';
+          isVoucherApplied = false;
+          updateCartUI();
+          return;
+        }
+
+        if (code === 'WELCOME10') {
+          isVoucherApplied = true;
+          status.textContent = '🎉 10% Discount Voucher Successfully Applied!';
+          status.style.color = '#2e7d32';
+          status.style.display = 'block';
+          updateCartUI();
+        } else {
+          status.textContent = '❌ Invalid voucher code.';
+          status.style.color = '#c1666b';
+          status.style.display = 'block';
+        }
+      }
+
+      function checkout() {
+        if (cart.length === 0) { alert('Your shopping bag is empty!'); return; }
+
+        const branch = document.getElementById('cartBranch').value;
+        const serviceType = document.getElementById('cartServiceType').value;
+        const address = document.getElementById('cartAddress').value.trim();
+        const note = document.getElementById('cartServiceNote').value.trim();
+
+        if (serviceType === 'Delivery Service' && !address) {
+          alert('Please enter your complete delivery address!');
+          return;
+        }
+
+        const totalText = document.getElementById('cartTotal').textContent;
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+
+        document.getElementById('receiptNo').textContent = `#DB-${Math.floor(10000 + Math.random() * 90000)}`;
+        document.getElementById('receiptBranch').textContent = branch;
+        document.getElementById('receiptServiceMethod').textContent = serviceType;
+        
+        if (serviceType === 'Delivery Service') {
+          document.getElementById('receiptAddressRow').style.display = 'block';
+          document.getElementById('receiptAddress').textContent = address;
+        } else {
+          document.getElementById('receiptAddressRow').style.display = 'none';
+        }
+
+        document.getElementById('receiptCount').textContent = `${totalQty} Items`;
+        document.getElementById('receiptNote').textContent = note || '-';
+        document.getElementById('receiptTotal').textContent = totalText;
+
+        toggleCartDrawer(false);
+        localStorage.setItem('hasPurchasedBefore', 'true');
+
+        setTimeout(() => {
+          document.getElementById('receiptModal').classList.add('open');
+          cart = [];
+          isVoucherApplied = false;
+          document.getElementById('cartServiceNote').value = '';
+          document.getElementById('cartAddress').value = '';
+          document.getElementById('voucherInput').value = '';
+          document.getElementById('voucherStatus').style.display = 'none';
+          updateCartUI();
+        }, 200);
+      }
+
+      function chatWhatsApp() {
+        const branch = document.getElementById('cartBranch').value;
+        const serviceType = document.getElementById('cartServiceType').value;
+        const address = document.getElementById('cartAddress').value.trim();
+        const note = document.getElementById('cartServiceNote').value.trim();
+        const totalText = document.getElementById('cartTotal').textContent;
+
+        if (cart.length === 0) {
+          window.open('https://wa.me/6283137731175?text=Hello%20Natacakery!%20I%20would%20like%20to%20inquire%20about%20your%20bakery%20and%20patisserie%20menu.', '_blank');
+          return;
+        }
+
+        let itemsList = cart.map(i => `• ${i.name} (x${i.qty}) - $${(i.price * i.qty).toFixed(2)}`).join('%0A');
+
+        let message = `Hello%20Natacakery!%20I%20would%20like%20to%20place%20an%20order:%0A%0A` +
+                      `*Order%20Details:*%0A${itemsList}%0A%0A` +
+                      `*Total:*%20${totalText}%0A` +
+                      `*Store%20Branch:*%20${encodeURIComponent(branch)}%0A` +
+                      `*Service%20Option:*%20${encodeURIComponent(serviceType)}%0A`;
+
+        if (serviceType === 'Delivery Service' && address) {
+          message += `*Address:*%20${encodeURIComponent(address)}%0A`;
+        }
+
+        if (note) {
+          message += `*Greeting%20Request:*%20${encodeURIComponent(note)}%0A`;
+        }
+
+        window.open(`https://wa.me/6283137731175?text=${message}`, '_blank');
+      }
+
+      function closeReceiptModal() {
+        document.getElementById('receiptModal').classList.remove('open');
+      }
+
+      // NAVIGASI TOMBOL ACTION
+      document.getElementById('btnBranchLocation').addEventListener('click', function() {
+        const iframe = document.getElementById('content');
+        iframe.src = 'branchlocation.html';
+      });
+
+      document.getElementById('btnCustomCake').addEventListener('click', function() {
+        const iframe = document.getElementById('content');
+        function sendScrollMessage() { iframe.contentWindow.postMessage('scrollToCustomCake', '*'); }
+        if (!iframe.src.includes('home.html')) {
+          iframe.src = 'home.html?scroll=customcake';
+        } else { sendScrollMessage(); }
+      });
+
+      document.querySelectorAll('.dropdown > button').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const parent = this.parentElement;
+          document.querySelectorAll('.dropdown').forEach(d => { if (d !== parent) d.classList.remove('open'); });
+          parent.classList.toggle('open');
+        });
+      });
+    </script>
+  </body>
+</html>

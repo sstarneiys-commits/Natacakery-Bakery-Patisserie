@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Natacakery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: { 50: '#FDFBF7', 100: '#FAF3E8', 200: '#F5E6D3', 300: '#EBD4B9' }, rose: { 200: '#E8B4B8' }, cokelat: { DEFAULT: '#6B4226' }, teks: '#2F2A25' },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Poppins', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#FAF3E8] text-teks font-sans p-4 sm:p-8">
+  <div class="max-w-4xl mx-auto bg-cream-50 p-8 sm:p-12 rounded-3xl border border-cream-300 space-y-6 shadow-sm">
+    <div class="text-center space-y-2">
+      <span class="text-xs font-bold text-cokelat uppercase tracking-widest bg-rose-200/60 px-3 py-1 rounded-full">Our Story</span>
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-cokelat">Tentang Natacakery 🥐</h1>
+      <p class="text-xs text-rose-400 font-semibold">Bakery &amp; Patisserie Artisanal</p>
+    </div>
+
+    <div class="text-xs sm:text-sm text-gray-700 leading-relaxed space-y-4 text-justify">
+      <p>Berdiri sejak tahun 2018, <strong>Natacakery</strong> menghadirkan kelezatan roti, kue, dan pastry tradisional khas Perancis dengan standar mutu tinggi ke seluruh dunia.</p>
+      <p>Setiap hidangan dibuat secara harian (*freshly baked*) menggunakan bahan-bahan segar pilihan, mentega asli berkualitas, dan ketulusan rasa cinta di setiap gigitannya.</p>
+    </div>
+
+    <!-- Kontak Resmi & Medsos -->
+    <div class="bg-cream-100 p-4 rounded-2xl border border-cream-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-cokelat">
+      <div class="flex items-center gap-2">
+        <i class="fa-brands fa-instagram text-lg text-rose-400"></i>
+        <span>Instagram: <strong>@natacakery</strong></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-phone text-lg text-rose-400"></i>
+        <span>Hubungi Kami: <strong>087722043442</strong></span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-cream-300 text-center">
+      <div><h4 class="font-bold text-xl text-cokelat">100%</h4><p class="text-[11px] text-gray-500">Bahan Alami</p></div>
+      <div><h4 class="font-bold text-xl text-cokelat">12+</h4><p class="text-[11px] text-gray-500">Varian Produk</p></div>
+      <div><h4 class="font-bold text-xl text-cokelat">8</h4><p class="text-[11px] text-gray-500">Cabang Negara</p></div>
+    </div>
+  </div>
+</body>
+</html>

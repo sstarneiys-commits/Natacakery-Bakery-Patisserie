@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Destinations &amp; Outlets | Natacakery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#FAF3E8',
+                            200: '#F5E6D3',
+                            300: '#EBD4B9'
+                        },
+                        rose: {
+                            100: '#F5DCDD',
+                            200: '#E8B4B8',
+                            300: '#D89498',
+                            400: '#C7757A'
+                        },
+                        cokelat: {
+                            light: '#9E6B47',
+                            DEFAULT: '#6B4226',
+                            dark: '#4A2C17'
+                        },
+                        teks: {
+                            DEFAULT: '#2F2A25',
+                            light: '#6E675F'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                        barcode: ['Libre Barcode 39 Text', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAF3E8;
+            color: #2F2A25;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        /* TIKET BOARDING PASS EFFECT */
+        .ticket-card {
+            background: #FDFBF7;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(107, 66, 38, 0.08);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .ticket-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(107, 66, 38, 0.15);
+        }
+        /* NOTCH / CEKUNGAN TIKET */
+        .ticket-notch-left, .ticket-notch-right {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #FAF3E8;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .ticket-notch-left { left: -12px; }
+        .ticket-notch-right { right: -12px; }
+
+        .barcode-text {
+            font-family: 'Libre Barcode 39 Text', cursive;
+            font-size: 32px;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-8">
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- HEADER TITLE SECTION -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 bg-rose-100 border border-rose-200 text-cokelat text-xs font-semibold px-4 py-1.5 rounded-full mb-3 uppercase tracking-widest shadow-sm">
+                <i class="fa-solid fa-plane-departure text-rose-400"></i> Global Bakery Passports
+            </div>
+            <h1 class="font-serif-title text-3xl sm:text-5xl font-bold text-cokelat mb-3">Destination Outlets</h1>
+            <p class="text-teks-light text-sm sm:text-base leading-relaxed">
+                Presenting your official boarding ticket to taste artisanal perfection. Visit our sweet destinations across 8 global locations.
+            </p>
+        </div>
+
+        <!-- TICKET GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- TICKET 1: INDONESIA HQ -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <!-- TICKET HEADER -->
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇮🇩</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Headquarters</span>
+                            <h2 class="font-serif-title text-lg font-bold">Jakarta Main Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">CGK-NAT88</span>
+                    </div>
+                </div>
+
+                <!-- TICKET BODY -->
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">JAKARTA (IDN)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>Jl. Senopati No. 88, Kebayoran Baru, Jakarta Selatan</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>07:00 – 21:00 WIB</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+62 877-2204-3442</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TICKET FOOTER WITH BARCODE -->
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-CGK</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 2: MALAYSIA -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇲🇾</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Flagship Store</span>
+                            <h2 class="font-serif-title text-lg font-bold">Kuala Lumpur Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">KUL-NAT12</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">KUALA LUMPUR (MYS)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>Lot G-12, Pavilion Kuala Lumpur, Bukit Bintang</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>08:00 – 22:00 MYT</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+60 3-2148 8899</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-KUL</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 3: SINGAPORE -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇸🇬</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Artisanal Boutique</span>
+                            <h2 class="font-serif-title text-lg font-bold">Orchard Road Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">SIN-NAT15</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">SINGAPORE (SGP)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>391 Orchard Road, #02-15 Ngee Ann City</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>08:30 – 21:30 SGT</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+65 6738 2000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-SIN</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 4: JAPAN -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇯🇵</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Patisserie Concept</span>
+                            <h2 class="font-serif-title text-lg font-bold">Tokyo Ginza Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">TYO-NAT10</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">TOKYO (JPN)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>6-10-1 Ginza, Chuo City, Tokyo 104-0061</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>09:00 – 20:00 JST</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+81 3-5537 1100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-TYO</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 5: SOUTH KOREA -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇰🇷</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Dessert Cafe</span>
+                            <h2 class="font-serif-title text-lg font-bold">Seoul Gangnam Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">ICN-NAT42</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">SEOUL (KOR)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>421 Apgujeong-ro, Gangnam-gu, Seoul</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>09:00 – 21:00 KST</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+82 2-518 9000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-ICN</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 6: USA -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇺🇸</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Metropolitan Lounge</span>
+                            <h2 class="font-serif-title text-lg font-bold">New York 5th Ave</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">JFK-NAT72</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">NEW YORK (USA)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>725 5th Ave, New York, NY 10022</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>07:30 – 20:00 EST</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+1 212-838 8000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-JFK</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 7: UNITED KINGDOM -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇬🇧</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Royal Patisserie</span>
+                            <h2 class="font-serif-title text-lg font-bold">London Mayfair Outlet</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">LHR-NAT14</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">LONDON (GBR)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>14 Bond Street, Mayfair, London W1S 3SS</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>08:00 – 19:30 GMT</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+44 20 7493 8888</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-LHR</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+            <!-- TICKET 8: AUSTRALIA -->
+            <div class="ticket-card rounded-3xl border-2 border-cream-300 overflow-hidden flex flex-col justify-between relative">
+                <div class="ticket-notch-left border-r-2 border-cream-300"></div>
+                <div class="ticket-notch-right border-l-2 border-cream-300"></div>
+
+                <div class="bg-cokelat text-cream-100 p-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🇦🇺</span>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rose-200 font-bold block">Harbour Bakery</span>
+                            <h2 class="font-serif-title text-lg font-bold">Sydney Circular Quay</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-cream-200 uppercase block font-semibold">Pass Code</span>
+                        <span class="font-mono text-xs font-bold text-rose-200">SYD-NAT04</span>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4 flex-1">
+                    <div class="flex justify-between items-center border-b border-dashed border-cream-300 pb-3">
+                        <div>
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Boarding City</span>
+                            <span class="font-bold text-cokelat text-sm">SYDNEY (AUS)</span>
+                        </div>
+                        <div class="text-center text-rose-400">
+                            <i class="fa-solid fa-plane text-base"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-teks-light uppercase font-bold block">Gate Status</span>
+                            <span class="inline-block bg-green-100 text-green-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">OPEN DAILY</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-teks">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-cokelat mt-0.5"></i>
+                            <span>Shop 4, Circular Quay West, Sydney NSW 2000</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-cokelat"></i>
+                            <span>07:00 – 18:00 AEST</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-cokelat"></i>
+                            <span class="font-medium">+61 2 9251 0000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cream-100 p-4 border-t-2 border-dashed border-cream-300 flex items-center justify-between gap-4">
+                    <div class="text-cokelat opacity-80">
+                        <p class="barcode-text">NATACAKERY-SYD</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="bg-cokelat hover:bg-rose-300 hover:text-cokelat text-cream-100 text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-compass"></i> Direct Map
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER MEMO -->
+        <div class="mt-16 text-center text-xs text-teks-light">
+            <p>© 2026 Natacakery Global Operations. Boarding passes are issued for delicious experiences worldwide.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Natacakery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: { 50: '#FDFBF7', 100: '#FAF3E8', 200: '#F5E6D3', 300: '#EBD4B9' }, rose: { 200: '#E8B4B8' }, cokelat: { DEFAULT: '#6B4226', dark: '#4A2C17' }, teks: '#2F2A25' },
+          fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Poppins', 'sans-serif'], mono: ['Courier Prime', 'monospace'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* STYLING POTONGAN TIKET MEMANJANG */
+    .ticket-card {
+      background: #FDFBF7;
+      border: 2px dashed #EBD4B9;
+      position: relative;
+    }
+    .ticket-card::before, .ticket-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background-color: #FAF3E8;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+    .ticket-card::before { left: -11px; border-right: 2px solid #EBD4B9; }
+    .ticket-card::after { right: -11px; border-left: 2px solid #EBD4B9; }
+  </style>
+</head>
+<body class="bg-[#FAF3E8] text-teks font-sans p-4 sm:p-8">
+  <div class="max-w-6xl mx-auto space-y-12">
+    
+    <!-- Hero Banner -->
+    <div class="bg-gradient-to-r from-cokelat to-cokelat-dark text-cream-100 rounded-3xl p-8 sm:p-12 shadow-lg flex flex-col md:flex-row items-center gap-8">
+      <div class="space-y-4 md:w-1/2">
+        <span class="bg-rose-200 text-cokelat text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bakery &amp; Patisserie</span>
+        <h1 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">Welcome to Natacakery 🥐</h1>
+        <p class="text-xs sm:text-sm text-cream-200 leading-relaxed">Kehangatan roti dan kue segar dipanggang setiap pagi menggunakan bahan organik pilihan terbaik.</p>
+        <a href="products.html" class="inline-block bg-rose-200 hover:bg-cream-300 text-cokelat font-semibold px-6 py-3 rounded-full text-xs sm:text-sm transition-all shadow">Jelajahi Katalog</a>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Bread" class="rounded-2xl shadow-md max-h-72 object-cover">
+      </div>
+    </div>
+
+    <!-- TIKET PENERBANGAN LOKASI CABANG -->
+    <section id="branchSection" class="space-y-6 scroll-mt-20">
+      <div class="text-center">
+        <span class="text-xs font-bold text-cokelat uppercase tracking-widest bg-rose-200/60 px-3 py-1 rounded-full">Global Outlets Boarding Pass</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-cokelat mt-2">Tiket Cabang Natacakery ✈️</h2>
+        <p class="text-xs sm:text-sm text-gray-600 mt-1">Gunakan Boarding Pass ini untuk menemukan gerai kami di seluruh dunia!</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- TIKET 1: INDONESIA -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇮🇩</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">INDONESIA</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE A-01 | CABANG UTAMA</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-62</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">PARIS (CDG)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">JAKARTA (CGK)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Jl. Dago No. 88, Bandung / Senopati, Jakarta</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +62 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 07.00 - 21.00 WIB</p>
+          </div>
+        </div>
+
+        <!-- TIKET 2: MALAYSIA -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇲🇾</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">MALAYSIA</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE B-02 | CABANG ASIA</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-60</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">JAKARTA (CGK)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">KUALA LUMPUR (KUL)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Bukit Bintang Street No. 45, KL</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +60 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 08.00 - 22.00 MYT</p>
+          </div>
+        </div>
+
+        <!-- TIKET 3: SINGAPORE -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇸🇬</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">SINGAPORE</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE C-03 | CABANG ASIA</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-65</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">KUALA LUMPUR (KUL)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">SINGAPORE (SIN)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Orchard Road #01-14, Singapore</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +65 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 08.00 - 21.30 SGT</p>
+          </div>
+        </div>
+
+        <!-- TIKET 4: JAPAN -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇯🇵</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">JAPAN</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE D-04 | CABANG TIMUR</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-81</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">SINGAPORE (SIN)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">TOKYO (HND)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Shibuya Crossing Block C-3, Tokyo</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +81 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 07.30 - 20.00 JST</p>
+          </div>
+        </div>
+
+        <!-- TIKET 5: SOUTH KOREA -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇰🇷</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">SOUTH KOREA</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE E-05 | CABANG TIMUR</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-82</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">TOKYO (HND)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">SEOUL (ICN)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Myeongdong Street No. 12, Seoul</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +82 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 08.00 - 22.00 KST</p>
+          </div>
+        </div>
+
+        <!-- TIKET 6: USA -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇺🇸</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">UNITED STATES</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE F-06 | CABANG BARAT</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-01</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">PARIS (CDG)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">NEW YORK (JFK)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> 5th Avenue Broadway, New York</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +1 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 06.30 - 20.00 EST</p>
+          </div>
+        </div>
+
+        <!-- TIKET 7: UNITED KINGDOM -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇬🇧</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">UNITED KINGDOM</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE G-07 | CABANG EROPA</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-44</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">PARIS (CDG)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">LONDON (LHR)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Oxford Street No. 99, London</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +44 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 07.00 - 19.30 GMT</p>
+          </div>
+        </div>
+
+        <!-- TIKET 8: AUSTRALIA -->
+        <div class="ticket-card p-5 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-cream-300 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🇦🇺</span>
+              <div>
+                <h3 class="font-bold text-cokelat text-sm">AUSTRALIA</h3>
+                <span class="text-[10px] text-gray-500 font-mono">GATE H-08 | CABANG PASIFIK</span>
+              </div>
+            </div>
+            <span class="font-mono text-xs font-bold bg-rose-200 text-cokelat px-2.5 py-1 rounded-lg">FLIGHT BP-61</span>
+          </div>
+          <div class="py-4 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-gray-400 font-mono block">ORIGIN</span>
+              <p class="font-serif font-bold text-lg text-cokelat">JAKARTA (CGK)</p>
+            </div>
+            <div class="text-center">
+              <i class="fa-solid fa-plane text-rose-400 text-xs"></i>
+              <div class="w-16 border-t border-dashed border-rose-300 my-1"></div>
+              <span class="text-[9px] text-gray-400 font-mono">DIRECT</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 font-mono block">DESTINATION</span>
+              <p class="font-serif font-bold text-lg text-cokelat">SYDNEY (SYD)</p>
+            </div>
+          </div>
+          <div class="bg-cream-100 p-3 rounded-xl border border-cream-200 text-xs space-y-1">
+            <p class="font-semibold text-cokelat"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> George Street Circular Quay, Sydney</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-phone text-rose-400 mr-1"></i> Telp: +61 877-2204-3442</p>
+            <p class="text-[11px] text-gray-600"><i class="fa-solid fa-clock text-rose-400 mr-1"></i> Jam Operasional: 07.00 - 20.00 AEST</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function scrollToBranches() {
+      const sec = document.getElementById('branchSection');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('message', function(event) {
+      if (event.data === 'scrollToBranches') {
+        scrollToBranches();
+      }
+    });
+
+    window.addEventListener('load', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('scroll') === 'branches') {
+        setTimeout(scrollToBranches, 200);
+      }
+    });
+  </script>
+</body>
+</html>

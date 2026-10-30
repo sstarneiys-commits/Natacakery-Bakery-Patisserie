@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME | Natacakery</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #FAF3E8;
+        color: #2F2A25;
+        margin: 0;
+        padding: 0;
+      }
+
+      .btn-add-custom-cart {
+        width: 100%;
+        background: #6B4226;
+        color: #FAF3E8;
+        border: none;
+        padding: 12px;
+        border-radius: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 14px;
+        box-shadow: 0 4px 12px rgba(107, 66, 38, 0.25);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-add-custom-cart:hover {
+        background: #D89498;
+        color: #FFFFFF;
+        transform: translateY(-2px);
+      }
+
+      .struk-wrap {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .struk-wrap.tampil {
+        display: block;
+        animation: fadeIn 0.4s ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+
+      <!-- CAROUSEL HERO AREA (DISESUAIKAN PERSIS DENGAN BESTSELLER CATALOG) -->
+      <div class="slider">
+        <div class="slider-track">
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=1200&q=80" alt="Red Velvet Velvet Cake">
+            <span class="badge-bestseller">Best Seller</span>
+            <div class="slide-caption">
+              <strong>Red Velvet Velvet Cake</strong>
+              <span>Tender red velvet sponge layered with Belgian premium cream cheese frosting.</span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1200&q=80" alt="Classic Chocolate Éclair">
+            <span class="badge-bestseller">Best Seller</span>
+            <div class="slide-caption">
+              <strong>Classic Chocolate Éclair</strong>
+              <span>French choux pastry filled with silky vanilla custard and dark chocolate glaze.</span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80" alt="Butter Almond Croissant">
+            <span class="badge-bestseller">Best Seller</span>
+            <div class="slide-caption">
+              <strong>Butter Almond Croissant</strong>
+              <span>Flaky French croissant filled and topped with sweet almond frangipane.</span>
+            </div>
+          </div>
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+        <div class="slider-dots"></div>
+      </div>
+
+      <!-- WAVE TRANSITION 1 -->
+      <div class="wave-wrapper">
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 Q120,0 240,60 T480,60 T720,60 T960,60 T1200,60 T1440,60 L1440,120 L0,120 Z" fill="#FFFBF7"></path>
+        </svg>
+      </div>
+
+      <!-- SECTION 1: WELCOME BOX -->
+      <section class="band putih">
+        <div class="welcome-box reveal">
+          <h2>Welcome to Natacakery Bakery &amp; Patisserie!</h2>
+          <p>Freshly baked artisanal breads and delicate pastries, crafted daily right from our ovens.</p>
+          <p>From warm, buttery morning croissants to bespoke celebration cakes, every recipe is prepared using finest ingredients with homemade passion.</p>
+          <p><strong>This Week's Highlights:</strong><br>Red Velvet Velvet Cake &mdash; Classic Chocolate Éclair &mdash; Butter Almond Croissant</p>
+          <p>Explore our full collection in the <strong>Products</strong> page, or visit our <strong>About</strong> section to connect with our master bakers.</p>
+        </div>
+      </section>
+
+      <!-- WAVE TRANSITION 2 -->
+      <div class="wave-wrapper" style="background-color: #FFFBF7;">
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 Q120,0 240,60 T480,60 T720,60 T960,60 T1200,60 T1440,60 L1440,120 L0,120 Z" fill="#FBEAEA"></path>
+        </svg>
+      </div>
+
+      <!-- SECTION 2: WHY CHOOSE US -->
+      <section class="band rose-tint">
+        <div class="kenapa-section">
+          <div class="section-header reveal">
+            <span class="sub-title">Kitchen Excellence</span>
+            <h2>Why Choose Us</h2>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="kenapa-grid">
+            <div class="kenapa-item reveal">
+              <div class="ikon">🌾</div>
+              <h3>Fresh Daily</h3>
+              <p>Baked fresh every single morning, guaranteed zero leftover stock.</p>
+            </div>
+            <div class="kenapa-item reveal">
+              <div class="ikon">🍯</div>
+              <h3>Premium Ingredients</h3>
+              <p>Preservative-free, carefully sourced from certified trusted suppliers.</p>
+            </div>
+            <div class="kenapa-item reveal">
+              <div class="ikon">🎂</div>
+              <h3>Custom Creations</h3>
+              <p>Tailor your preferred flavor, size, and personalized messages seamlessly.</p>
+            </div>
+            <div class="kenapa-item reveal">
+              <div class="ikon">🚚</div>
+              <h3>Express Delivery</h3>
+              <p>Fast and safe handling to ensure your cakes arrive in immaculate condition.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WAVE TRANSITION 3 -->
+      <div class="wave-wrapper" style="background-color: #FBEAEA;">
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 Q120,0 240,60 T480,60 T720,60 T960,60 T1200,60 T1440,60 L1440,120 L0,120 Z" fill="#FAF3E8"></path>
+        </svg>
+      </div>
+
+      <!-- SECTION 3: FLAVOR CARDS -->
+      <section class="band cream">
+        <div class="rasa-section">
+          <div class="section-header reveal">
+            <span class="sub-title">Philosophy of Taste</span>
+            <h2>Flavor Notes</h2>
+            <p style="margin-top: 6px; opacity: 0.8; font-size: 14px;">Unfold an envelope to discover its meaningful story</p>
+          </div>
+
+          <div class="rasa-grid">
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Vanilla</div>
+              <div class="kertas">Vanilla represents familiar comfort &mdash; a gentle scent that instantly feels like home, no matter how simple life gets.</div>
+            </div>
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Chocolate</div>
+              <div class="kertas">Chocolate is a warm hug on a long day &mdash; a touch of bitterness, deep sweetness, and ultimate satisfaction.</div>
+            </div>
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Matcha</div>
+              <div class="kertas">Matcha brings mindful tranquility &mdash; subtle earthy notes that remind us to slow down and savor the present.</div>
+            </div>
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Red Velvet</div>
+              <div class="kertas">Red Velvet embodies confident elegance &mdash; tender on the inside, boldly striking on the outside.</div>
+            </div>
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Taro</div>
+              <div class="kertas">Taro is a pleasant surprise &mdash; unique in hue, soothing in taste, just like a lovely new discovery.</div>
+            </div>
+            <div class="kartu-rasa reveal">
+              <div class="amplop">Caramel</div>
+              <div class="kertas">Caramel reflects sweet memories cooked gently over time &mdash; requiring patience, always worth the wait.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: MAKE YOUR OWN CAKE -->
+      <div id="custom-cake-section" class="myo-section-wrap">
+        <svg class="myo-wave" viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q30,10 60,30 T120,30 T180,30 T240,30 T300,30 T360,30 T420,30 T480,30 T540,30 T600,30 T660,30 T720,30 T780,30 T840,30 T900,30 T960,30 T1020,30 T1080,30 T1140,30 T1200,30 L1200,60 L0,60 Z" fill="#DCB8AE"/>
+        </svg>
+
+        <div class="myo-card">
+          <div class="section-header reveal" style="margin-bottom: 20px;">
+            <span class="sub-title" style="color: #6B4226;">Infinite Creativity</span>
+            <h2 style="color: #6B4226;">Make Your Own Cake</h2>
+            <div class="divider-line"></div>
+            <p class="tagline">Design your dream pastry, layer by layer</p>
+          </div>
+
+          <div class="myo-content">
+            <!-- CAKE PREVIEW STAGE -->
+            <div class="kolom-preview">
+              <div class="panggung">
+                <div class="kue-wrap ukuran-medium" id="kueWrap">
+                  <div class="kue" id="kue">
+                    <div class="chip" style="top:5px; left:16px;"></div>
+                    <div class="chip" style="top:12px; left:58px;"></div>
+                    <div class="chip" style="top:3px; left:94px;"></div>
+                    <div class="frosting" id="frosting">
+                      <div class="tetes t1"></div><div class="tetes t2"></div>
+                      <div class="tetes t3"></div><div class="tetes t4"></div>
+                    </div>
+                    <div class="topping" id="topping"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INTERACTIVE OPTIONS -->
+            <div class="kolom-opsi">
+              <div class="langkah">
+                <p class="label"><span class="nomor">1</span>Cake or Cookie base today?</p>
+                <div class="baris-swatch">
+                  <div class="kartu-kategori aktif" data-kategori="cake"><span class="emoji">🎂</span>Cake</div>
+                  <div class="kartu-kategori" data-kategori="cookie"><span class="emoji">🍪</span>Cookies</div>
+                </div>
+              </div>
+
+              <div class="divider-hias">✦</div>
+
+              <div class="langkah">
+                <p class="label"><span class="nomor">2</span>Select your preferred size</p>
+                <div class="baris-swatch">
+                  <div class="swatch-ukuran" data-ukuran="mini">Mini</div>
+                  <div class="swatch-ukuran aktif" data-ukuran="medium">Medium</div>
+                  <div class="swatch-ukuran" data-ukuran="large">Large</div>
+                </div>
+              </div>
+
+              <div class="divider-hias">✦</div>
+
+              <div class="langkah">
+                <p class="label"><span class="nomor">3</span>Pick your favorite base flavor</p>
+                <div class="baris-swatch">
+                  <div class="rasa-item aktif" data-rasa="#d4a373" data-nama="Vanilla" data-harga="0">
+                    <div class="swatch-warna" style="background:#d4a373"></div><span>Vanilla</span></div>
+                  <div class="rasa-item" data-rasa="#6b4226" data-nama="Chocolate" data-harga="0">
+                    <div class="swatch-warna" style="background:#6b4226"></div><span>Chocolate</span></div>
+                  <div class="rasa-item" data-rasa="#c1666b" data-nama="Red Velvet" data-harga="1.50">
+                    <div class="swatch-warna" style="background:#c1666b"></div><span>Red Velvet</span></div>
+                  <div class="rasa-item" data-rasa="#a3b18a" data-nama="Matcha" data-harga="1.50">
+                    <div class="swatch-warna" style="background:#a3b18a"></div><span>Matcha</span></div>
+                  <div class="rasa-item" data-rasa="#c9a0dc" data-nama="Taro" data-harga="1.00">
+                    <div class="swatch-warna" style="background:#c9a0dc"></div><span>Taro</span></div>
+                </div>
+              </div>
+
+              <div class="divider-hias">✦</div>
+
+              <div class="langkah">
+                <p class="label"><span class="nomor">4</span>Choose luscious frosting (or plain)</p>
+                <div class="baris-swatch">
+                  <div class="swatch-frosting aktif" data-gaya="" data-warna="" data-nama="No Frosting" data-harga="0">No Frosting</div>
+                  <div class="swatch-frosting" data-gaya="gaya-swirl" data-warna="#ffffff" data-nama="Buttercream" data-harga="0.80">Buttercream</div>
+                  <div class="swatch-frosting" data-gaya="gaya-drip" data-warna="#4b2e1e" data-nama="Ganache" data-harga="1.50">Ganache</div>
+                  <div class="swatch-frosting" data-gaya="gaya-flat" data-warna="#fdf1e7" data-nama="Cream Cheese" data-harga="1.20">Cream Cheese</div>
+                  <div class="swatch-frosting" data-gaya="gaya-fondant" data-warna="#f3c6d3" data-nama="Fondant" data-harga="2.00">Fondant</div>
+                </div>
+              </div>
+
+              <div class="divider-hias">✦</div>
+
+              <div class="langkah">
+                <p class="label"><span class="nomor">5</span>Final touch &amp; toppings</p>
+                <div class="baris-swatch">
+                  <div class="ikon-item aktif" data-topping="" data-nama="No Topping" data-harga="0">
+                    <div class="swatch-ikon">🚫</div><span>Plain</span></div>
+                  <div class="ikon-item" data-topping="🍒" data-nama="Fresh Berries" data-harga="1.20">
+                    <div class="swatch-ikon">🍒</div><span>Fresh Berries</span></div>
+                  <div class="ikon-item" data-topping="🌈" data-nama="Rainbow Sprinkles" data-harga="0.80">
+                    <div class="swatch-ikon">🌈</div><span>Sprinkles</span></div>
+                  <div class="ikon-item" data-topping="🍫" data-nama="Choc Shavings" data-harga="1.00">
+                    <div class="swatch-ikon">🍫</div><span>Choc Shavings</span></div>
+                  <div class="ikon-item" data-topping="🌸" data-nama="Fondant Flowers" data-harga="1.50">
+                    <div class="swatch-ikon">🌸</div><span>Fondant Flowers</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-estimasi" id="btnEstimasi">Calculate Price &amp; Preview Struk ✦</button>
+
+          <div class="struk-wrap" id="strukWrap">
+            <div class="struk" id="struk"></div>
+            <button class="btn-add-custom-cart" id="btnAddCustomToCart">
+              <i class="fa-solid fa-cart-plus"></i> + Add Custom Creation to Shopping Bag
+            </button>
+          </div>
+        </div>
+
+        <svg class="myo-wave bawah" viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q30,10 60,30 T120,30 T180,30 T240,30 T300,30 T360,30 T420,30 T480,30 T540,30 T600,30 T660,30 T720,30 T780,30 T840,30 T900,30 T960,30 T1020,30 T1080,30 T1140,30 T1200,30 L1200,60 L0,60 Z" fill="#DCB8AE"/>
+        </svg>
+      </div>
+
+      <!-- WAVE TRANSITION 4 -->
+      <div class="wave-wrapper" style="background-color: #FAF3E8;">
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 Q120,0 240,60 T480,60 T720,60 T960,60 T1200,60 T1440,60 L1440,120 L0,120 Z" fill="#6B4226"></path>
+        </svg>
+      </div>
+
+      <!-- FOOTER AREA -->
+      <footer>
+        <p>&copy; 2026 Natacakery | Bakery &amp; Patisserie. Baked with love every single day.</p>
+      </footer>
+
+    </main>
+
+    <!-- JS Files -->
+    <script src="slider.js"></script>
+    <script src="flavor-cards.js"></script>
+    <script src="reveal.js"></script>
+
+    <!-- Custom Cake & Interactivity Script -->
+    <script>
+      // Scroll listener dari Parent Frame
+      window.addEventListener('message', function(event) {
+        if (event.data === 'scrollToCustomCake') {
+          const target = document.getElementById('custom-cake-section');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+
+      // Interactive Custom Cake State (USD Format)
+      const kue = document.getElementById('kue');
+      const kueWrap = document.getElementById('kueWrap');
+      const frosting = document.getElementById('frosting');
+      const topping = document.getElementById('topping');
+
+      let currentCalculatedTotal = 0;
+
+      const pilihan = {
+        kategori: 'cake', 
+        ukuran: 'medium',
+        rasaNama: 'Vanilla', rasaHarga: 0,
+        frostingNama: 'No Frosting', frostingHarga: 0,
+        toppingNama: 'No Topping', toppingHarga: 0,
+      };
+
+      const basePrice = {
+        cake: { mini: 12.00, medium: 18.00, large: 28.00 },
+        cookie: { mini: 4.00, medium: 7.00, large: 12.00 }
+      };
+
+      document.querySelectorAll('.kartu-kategori').forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.kartu-kategori').forEach(x => x.classList.remove('aktif'));
+          el.classList.add('aktif');
+          pilihan.kategori = el.dataset.kategori;
+          kue.classList.toggle('cookie', pilihan.kategori === 'cookie');
+        });
+      });
+
+      document.querySelectorAll('.swatch-ukuran').forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.swatch-ukuran').forEach(x => x.classList.remove('aktif'));
+          el.classList.add('aktif');
+          pilihan.ukuran = el.dataset.ukuran;
+          kueWrap.className = 'kue-wrap ukuran-' + pilihan.ukuran;
+        });
+      });
+
+      document.querySelectorAll('.rasa-item').forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.rasa-item').forEach(x => x.classList.remove('aktif'));
+          el.classList.add('aktif');
+          kue.style.setProperty('--rasa', el.dataset.rasa);
+          pilihan.rasaNama = el.dataset.nama;
+          pilihan.rasaHarga = parseFloat(el.dataset.harga);
+        });
+      });
+
+      document.querySelectorAll('.swatch-frosting').forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.swatch-frosting').forEach(x => x.classList.remove('aktif'));
+          el.classList.add('aktif');
+          if (el.dataset.gaya === '') {
+            frosting.className = 'frosting';
+          } else {
+            frosting.className = 'frosting aktif ' + el.dataset.gaya;
+            frosting.style.setProperty('--frosting', el.dataset.warna);
+          }
+          pilihan.frostingNama = el.dataset.nama;
+          pilihan.frostingHarga = parseFloat(el.dataset.harga);
+        });
+      });
+
+      document.querySelectorAll('.ikon-item').forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.ikon-item').forEach(x => x.classList.remove('aktif'));
+          el.classList.add('aktif');
+          if (el.dataset.topping === '') {
+            topping.classList.remove('aktif');
+          } else {
+            topping.textContent = el.dataset.topping;
+            topping.classList.add('aktif');
+          }
+          pilihan.toppingNama = el.dataset.nama;
+          pilihan.toppingHarga = parseFloat(el.dataset.harga);
+        });
+      });
+
+      // Hitung Estimasi Struk
+      document.getElementById('btnEstimasi').addEventListener('click', () => {
+        const base = basePrice[pilihan.kategori][pilihan.ukuran];
+        currentCalculatedTotal = base + pilihan.rasaHarga + pilihan.frostingHarga + pilihan.toppingHarga;
+        const fmt = (n) => '$' + n.toFixed(2);
+
+        document.getElementById('struk').innerHTML = `
+          <div class="kop">Natacakery Patisserie</div>
+          <div class="sub">~ Custom Order Estimate ~</div>
+          <hr>
+          <div class="baris"><span>${pilihan.kategori === 'cake' ? 'Custom Cake' : 'Custom Cookies'} (${pilihan.ukuran.toUpperCase()})</span><span>${fmt(base)}</span></div>
+          <div class="baris"><span>Flavor: ${pilihan.rasaNama}</span><span>${fmt(pilihan.rasaHarga)}</span></div>
+          <div class="baris"><span>Frosting: ${pilihan.frostingNama}</span><span>${fmt(pilihan.frostingHarga)}</span></div>
+          <div class="baris"><span>Topping: ${pilihan.toppingNama}</span><span>${fmt(pilihan.toppingHarga)}</span></div>
+          <hr>
+          <div class="baris total"><span>Total Estimated</span><span>${fmt(currentCalculatedTotal)}</span></div>
+        `;
+        document.getElementById('strukWrap').classList.add('tampil');
+      });
+
+      // Tambahkan hasil racikan Custom Cake ke Shopping Bag (Parent Window)
+      document.getElementById('btnAddCustomToCart').addEventListener('click', () => {
+        const customTitle = `Custom ${pilihan.kategori === 'cake' ? 'Cake' : 'Cookie'} (${pilihan.rasaNama} - ${pilihan.ukuran.toUpperCase()})`;
+        
+        const itemPayload = {
+          id: Date.now(),
+          name: customTitle,
+          price: currentCalculatedTotal,
+          image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80",
+          badge: "Bespoke Custom"
+        };
+
+        window.parent.postMessage({
+          type: 'addToCart',
+          product: itemPayload
+        }, '*');
+      });
+    </script>
+  </body>
+</html>
