@@ -92,96 +92,98 @@
 
     </div>
 
-   const imageAssets = [
+    <!-- JAVASCRIPT RENDER SCRIPT -->
+    <script>
+        const imageAssets = [
             {
                 name: "Red Velvet Velvet Cake",
                 category: "Hero Carousel / Cake",
                 imgPreview: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/A28M8OnL3j8",
+                webUrl: "https://unsplash.com/photos/1586788680434-30d324b2d46f",
                 desc: "Tender red velvet sponge layered with Belgian premium cream cheese frosting."
             },
             {
                 name: "Classic Chocolate Éclair",
                 category: "Hero Carousel / Pastry",
                 imgPreview: "https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/I41E_i8tM0I",
+                webUrl: "https://unsplash.com/photos/1612203985729-70726954388c",
                 desc: "French choux pastry filled with silky vanilla custard and dark chocolate glaze."
             },
             {
                 name: "Butter Almond Croissant",
                 category: "Hero Carousel / Pastry",
                 imgPreview: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/aGl34K495dE",
+                webUrl: "https://unsplash.com/photos/1555507036-ab1f4038808a",
                 desc: "Flaky French croissant filled and topped with sweet almond frangipane."
             },
             {
                 name: "Custom Creation Base",
                 category: "Interactive Custom Cake",
                 imgPreview: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/p9P8a1i4S_0",
+                webUrl: "https://unsplash.com/photos/1578985545062-69928b1d9587",
                 desc: "Artisanal custom cake preview photography."
             },
             {
                 name: "Artisanal Sourdough Loaf",
                 category: "Bread Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/pS3S68N30oU",
+                webUrl: "https://unsplash.com/photos/1509440159596-0249088772ff",
                 desc: "24-hour naturally fermented bread with a crisp golden crust."
             },
             {
                 name: "Japanese Milk Bread",
                 category: "Bread Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/cE13i_OIn30",
+                webUrl: "https://unsplash.com/photos/1589367920969-ab8e050bbb04",
                 desc: "Ultra-fluffy Japanese loaf crafted with Tangzhong roux."
             },
             {
                 name: "Fresh Strawberry Tart",
                 category: "Pastry Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/f_A_C6_f4x0",
+                webUrl: "https://unsplash.com/photos/1519869325930-281384150729",
                 desc: "Crispy tart shell filled with crème pâtissière and fresh strawberries."
             },
             {
                 name: "French Macaron Gift Box",
                 category: "Cookies Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/93d0_I3G1I0",
+                webUrl: "https://unsplash.com/photos/1569864358642-9d1684040f43",
                 desc: "Assortment of 8 authentic French macarons filled with ganache."
             },
             {
                 name: "Matcha Opera Cake",
                 category: "Cake Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/p9P8a1i4S_0",
+                webUrl: "https://unsplash.com/photos/1578985545062-69928b1d9587",
                 desc: "Delicate layers of almond sponge, Kyoto Uji Matcha buttercream."
             },
             {
                 name: "Korean Garlic Cheese Bread",
                 category: "Bread Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/K9_rR4jC6_s",
+                webUrl: "https://unsplash.com/photos/1619535860434-ba1d8fa12536",
                 desc: "Savory bun stuffed with cream cheese and dipped in garlic butter."
             },
             {
                 name: "Choco Chip Soft Cookies",
                 category: "Cookies Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/I9_46C_f3xI",
+                webUrl: "https://unsplash.com/photos/1499636136210-6f4ee915583e",
                 desc: "Soft-baked cookie packed with Belgian chocolate chunks."
             },
             {
                 name: "Deluxe Birthday Hamper",
                 category: "Hampers Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/D4i1_K8L8_0",
+                webUrl: "https://unsplash.com/photos/1549465220-1a8b9238cd48",
                 desc: "Luxury gift box combining Cookies, Macarons, and Greeting Card."
             },
             {
                 name: "Cinnamon Glazed Roll",
                 category: "Bread Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/S3S_98L_kI0",
+                webUrl: "https://unsplash.com/photos/1509365465985-25d11c17e812",
                 desc: "Warm Ceylon cinnamon roll topped with cream cheese glaze."
             },
             {
@@ -195,53 +197,53 @@
                 name: "Pistachio Raspberry Tart",
                 category: "Pastry Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/Nl8Oa6ZuNcA",
+                webUrl: "https://unsplash.com/photos/1565958011703-44f9829ba187",
                 desc: "Pistachio frangipane pastry base topped with fresh raspberries."
             },
             {
                 name: "Brioche Feuilletée",
                 category: "Bread Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/F8_R89K0l_s",
+                webUrl: "https://unsplash.com/photos/1608198093002-ad4e005484ec",
                 desc: "Laminated flaky brioche loaf with rich butter aroma."
             },
             {
                 name: "Double Chocolate Brownie Box",
                 category: "Cookies Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1515037893149-de7f840978e2?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/vI_M83K_1o0",
+                webUrl: "https://unsplash.com/photos/1515037893149-de7f840978e2",
                 desc: "Fudgy dark chocolate brownies with sea salt flakes."
             },
             {
                 name: "Signature Afternoon Tea Hamper",
                 category: "Hampers Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/K3_p8M9L0_s",
+                webUrl: "https://unsplash.com/photos/1513201099705-a9746e1e201f",
                 desc: "Elegant hamper featuring Scones, English Tea, and Mini Tartlets."
             },
             {
                 name: "Earl Grey Blueberry Cake",
                 category: "Cake Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/fI_98K_3m0s",
+                webUrl: "https://unsplash.com/photos/1464349095431-e9a21285b5f3",
                 desc: "Infused Earl Grey tea sponge layers filled with blueberry compote."
             },
             {
                 name: "Pain au Chocolat",
                 category: "Pastry Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/W7_K89M0x_s",
+                webUrl: "https://unsplash.com/photos/1623334044303-241021148842",
                 desc: "Classic buttery croissant pastry stuffed with dark chocolate batons."
             },
             {
                 name: "Vanilla Bean Biscotti Jar",
                 category: "Cookies Catalog",
                 imgPreview: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80",
-                webUrl: "https://unsplash.com/photos/L9_p8M7K0_s",
+                webUrl: "https://unsplash.com/photos/1558961363-fa8fdf82db35",
                 desc: "Twice-baked crunchy Italian almond biscottis infused with vanilla."
             }
         ];
-    
+
         document.addEventListener('DOMContentLoaded', function() {
             const grid = document.getElementById('sourceGrid');
             grid.innerHTML = imageAssets.map(item => `
