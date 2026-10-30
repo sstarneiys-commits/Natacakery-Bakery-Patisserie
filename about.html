@@ -1,52 +1,176 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HOME</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header bgcolor="white">
-      <h2>Area Konten</h2>
-    </header>
-    <main>
-      <p>
-        <strong>Bakery &amp; Patisserie</strong><br>
-        Roti dan kue segar setiap hari, dipanggang langsung dari dapur kami.
-      </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Journey | Natacakery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-      <p>
-        <strong>Alamat:</strong><br>
-        Jl. Merdeka No. 45, Bandung, Jawa Barat
-      </p>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#FAF3E8',
+                            200: '#F5E6D3',
+                            300: '#EBD4B9'
+                        },
+                        rose: {
+                            100: '#F5DCDD',
+                            200: '#E8B4B8',
+                            300: '#D89498',
+                            400: '#C7757A'
+                        },
+                        cokelat: {
+                            light: '#9E6B47',
+                            DEFAULT: '#6B4226',
+                            dark: '#4A2C17'
+                        },
+                        teks: {
+                            DEFAULT: '#2F2A25',
+                            light: '#6E675F'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAF3E8;
+            color: #2F2A25;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .story-card {
+            background: #FDFBF7;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(107, 66, 38, 0.12);
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-8">
 
-      <p>
-        <strong>Telepon:</strong> (022) 123-4567<br>
-        <strong>Email:</strong> halo@bakerypatisserie.com
-      </p>
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- HEADER SECTION -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <div class="inline-flex items-center gap-2 bg-rose-100 border border-rose-200 text-cokelat text-xs font-semibold px-4 py-1.5 rounded-full mb-3 uppercase tracking-widest shadow-sm">
+                <i class="fa-solid fa-heart text-rose-400"></i> Freshly Baked Story
+            </div>
+            <h1 class="font-serif-title text-3xl sm:text-5xl font-bold text-cokelat mb-3">Our Whimsical Journey</h1>
+            <p class="text-teks-light text-sm sm:text-base leading-relaxed">
+                From flour-covered aprons in a cozy home kitchen to spreading sweet smiles across the globe!
+            </p>
+        </div>
 
-      <p>
-        <strong>Jam Buka:</strong><br>
-        Senin - Sabtu: 07.00 - 20.00<br>
-        Minggu: 08.00 - 17.00
-      </p>
+        <!-- OUR STORY TIMELINE -->
+        <div class="space-y-8 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-cream-300 hidden sm:block"></div>
 
-      <p>
-        <strong>Media Sosial:</strong><br>
-        Instagram: @bakerypatisserie.id<br>
-        WhatsApp: 0812-3456-7890
-      </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 relative">
 
-      <iframe
-        src="https://www.google.com/maps?q=Bandung&output=embed"
-        title="Lokasi Toko"
-        style="width:100%; height:300px; border:none; margin-top:15px; border-radius:8px;">
-      </iframe>
-    </main>
-  </body>
-</html>
-      </p>
-    </main>
-  </body>
+            <!-- 2013 -->
+            <div class="story-card rounded-3xl border-2 border-cream-300 p-6 relative">
+                <span class="inline-block bg-rose-200 text-cokelat font-bold text-xs px-3 py-1 rounded-full mb-3">2013 — The Messy Beginning 👩‍🍳</span>
+                <h3 class="font-serif-title text-xl font-bold text-cokelat mb-2">Flour in Our Hair &amp; Big Dreams</h3>
+                <p class="text-xs text-teks-light leading-relaxed">
+                    It all started in a tiny home kitchen with one oven, a broken whisk, and a whole lot of passion! Our first batch of cookies was slightly overbaked, but our neighbors loved them anyway (or maybe they were just being nice!). Natacakery was officially born!
+                </p>
+            </div>
+
+            <!-- 2017 -->
+            <div class="story-card rounded-3xl border-2 border-cream-300 p-6 relative">
+                <span class="inline-block bg-rose-200 text-cokelat font-bold text-xs px-3 py-1 rounded-full mb-3">2017 — Goodbye Garage! 🏬</span>
+                <h3 class="font-serif-title text-xl font-bold text-cokelat mb-2">Our Very First Boutique Shop</h3>
+                <p class="text-xs text-teks-light leading-relaxed">
+                    After filling our house with 500kg of flour bags, we realized we needed more space. We opened our tiny bakery shop in Jakarta! The smell of fresh croissants drew long queues every morning, and we almost ran out of butter every single weekend!
+                </p>
+            </div>
+
+            <!-- 2021 -->
+            <div class="story-card rounded-3xl border-2 border-cream-300 p-6 relative">
+                <span class="inline-block bg-rose-200 text-cokelat font-bold text-xs px-3 py-1 rounded-full mb-3">2021 — Spreading the Sweetness ✈️</span>
+                <h3 class="font-serif-title text-xl font-bold text-cokelat mb-2">Going Regional &amp; Custom Madness</h3>
+                <p class="text-xs text-teks-light leading-relaxed">
+                    People started asking for custom birthday cakes, wedding tiers, and gift hampers. We expanded to Bandung &amp; Surabaya, and launched our signature custom cake design service. Creating sweet memories became our daily superpower!
+                </p>
+            </div>
+
+            <!-- 2026 -->
+            <div class="story-card rounded-3xl border-2 border-cream-300 p-6 relative">
+                <span class="inline-block bg-rose-200 text-cokelat font-bold text-xs px-3 py-1 rounded-full mb-3">2026 — Worldwide Sweet Destinations 🌍</span>
+                <h3 class="font-serif-title text-xl font-bold text-cokelat mb-2">8 Global Branches &amp; Counting!</h3>
+                <p class="text-xs text-teks-light leading-relaxed">
+                    Today, Natacakery serves happiness across 8 global destinations—from Tokyo and Seoul to New York and London! No matter where you are, our ovens are always baking warm treats made with 100% love and premium ingredients.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- STORE INFORMATION & CONTACT CARD -->
+        <div class="bg-cokelat text-cream-100 rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <span class="text-3xl block">💌</span>
+                <h2 class="font-serif-title text-2xl sm:text-4xl font-bold text-cream-50">Get in Touch with Us</h2>
+                <p class="text-xs sm:text-sm text-cream-200 leading-relaxed">
+                    Have questions, custom cake inquiries, or just want to say hi? We’d love to hear from you!
+                </p>
+
+                <!-- CONTACT DATA GRID -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
+                    
+                    <div class="bg-cokelat-dark p-4 rounded-2xl border border-rose-300/20">
+                        <span class="text-rose-200 text-xs font-bold block mb-1">🏢 Brand Name</span>
+                        <p class="text-xs font-semibold text-cream-100">Natacakery | Bakery &amp; Patisserie</p>
+                    </div>
+
+                    <div class="bg-cokelat-dark p-4 rounded-2xl border border-rose-300/20">
+                        <span class="text-rose-200 text-xs font-bold block mb-1">📧 Official Email</span>
+                        <p class="text-xs font-semibold text-cream-100 break-all">hello@natacakery.com</p>
+                    </div>
+
+                    <div class="bg-cokelat-dark p-4 rounded-2xl border border-rose-300/20">
+                        <span class="text-rose-200 text-xs font-bold block mb-1">📱 WhatsApp Hotline</span>
+                        <p class="text-xs font-semibold text-cream-100">+62 831-3773-1175</p>
+                    </div>
+
+                </div>
+
+                <!-- DIRECT WHATSAPP ACTION BUTTON -->
+                <div class="pt-4">
+                    <a href="https://wa.me/6283137731175?text=Hello%20Natacakery!%20I%20just%20read%20your%20sweet%20story%20and%20would%20love%20to%20know%20more%20about%20your%20cakes!" 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-2xl transition-all shadow-lg hover:scale-105">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat Directly on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER MEMO -->
+        <div class="mt-12 text-center text-xs text-teks-light">
+            <p>© 2026 Natacakery | Bakery &amp; Patisserie. Baked with love every single day.</p>
+        </div>
+
+    </div>
+
+</body>
 </html>
