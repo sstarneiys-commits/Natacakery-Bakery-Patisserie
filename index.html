@@ -943,10 +943,16 @@
 
       document.getElementById('btnCustomCake').addEventListener('click', function() {
         const iframe = document.getElementById('content');
-        function sendScrollMessage() { iframe.contentWindow.postMessage('scrollToCustomCake', '*'); }
+        
         if (!iframe.src.includes('home.html')) {
           iframe.src = 'home.html?scroll=customcake';
-        } else { sendScrollMessage(); }
+          iframe.onload = function() {
+            iframe.contentWindow.postMessage('scrollToCustomCake', '*');
+            iframe.onload = null;
+          };
+        } else {
+          iframe.contentWindow.postMessage('scrollToCustomCake', '*');
+        }
       });
 
       document.querySelectorAll('.dropdown > button').forEach(button => {
